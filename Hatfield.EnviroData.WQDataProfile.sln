@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A275C878-3CAA-4257-B159-91C5C783B80F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.WQDataProfile", "Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj", "{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.StaticWQValueProvider", "Source\Hatfield.StaticWQValueProvider\Hatfield.StaticWQValueProvider.csproj", "{3A63A19E-BDAA-4C1E-8EA2-BA7C4DF61BB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A63A19E-BDAA-4C1E-8EA2-BA7C4DF61BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A63A19E-BDAA-4C1E-8EA2-BA7C4DF61BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A63A19E-BDAA-4C1E-8EA2-BA7C4DF61BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A63A19E-BDAA-4C1E-8EA2-BA7C4DF61BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
