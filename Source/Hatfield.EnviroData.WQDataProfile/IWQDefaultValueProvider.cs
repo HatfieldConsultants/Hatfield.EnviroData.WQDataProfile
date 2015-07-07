@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hatfield.EnviroData.WQDataProfile
 {
-    public interface IDefaultValueProvider
+    public interface IWQDefaultValueProvider
     {
         string Name { get; }
 
@@ -41,7 +41,7 @@ namespace Hatfield.EnviroData.WQDataProfile
         string DefaultVariableNameCV { get; }
         string DefaultVariableDefinition { get; }
         string DefaultVariableSpeciationCV { get; }
-        string DefaultVariableNoDataValue { get; }
+        double DefaultVariableNoDataValue { get; }
 
         //Units Default Values
         string DefaultUnitsTypeCV { get; }
