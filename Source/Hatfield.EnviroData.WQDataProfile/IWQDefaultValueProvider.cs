@@ -53,5 +53,7 @@ namespace Hatfield.EnviroData.WQDataProfile
         string DefaultCVUnitsType { get; }
         string DefaultCVTerm { get; }
         string DefaultCVName { get; }
+
+        WayToHandleNewData WayToHandleNewData { get; }
     }
 }

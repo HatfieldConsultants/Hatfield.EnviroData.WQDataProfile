@@ -222,5 +222,11 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         {
             get { return _data.DefaultCVName; }
         }
+
+
+        public WayToHandleNewData WayToHandleNewData
+        {
+            get { return _data.WayToHandleNewData; }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Hatfield.EnviroData.WQDataProfile
 {
     public class StaticWQDefaultValueProvider : IWQDefaultValueProvider
@@ -242,6 +243,14 @@ namespace Hatfield.EnviroData.WQDataProfile
             {
                 return "Unknown";
             }
+        }
+
+        public WayToHandleNewData WayToHandleNewData
+        {
+            get 
+            {
+                return WayToHandleNewData.CreateInstanceForNewData;
+            }        
         }
     }
 }
