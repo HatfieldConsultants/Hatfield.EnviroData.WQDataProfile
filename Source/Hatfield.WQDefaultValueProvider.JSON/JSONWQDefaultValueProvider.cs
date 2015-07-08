@@ -15,6 +15,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         {
             _jsonFilePath = jsonFilePath;
             _createNewConfigFileIsNotExist = createNewConfigFileIfNotExist;
+            Init();
         }
 
         public string Name
@@ -243,6 +244,10 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             return true;
         }
 
+        /// <summary>
+        /// Init method is called in the constructor
+        /// Calling Init functino separatly is not recommended
+        /// </summary>
         public void Init()
         {
             if (File.Exists(_jsonFilePath))
