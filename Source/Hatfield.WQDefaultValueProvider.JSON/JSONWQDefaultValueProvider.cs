@@ -9,10 +9,12 @@ namespace Hatfield.WQDefaultValueProvider.JSON
     {
         private WQDefaultValueModel _data;
         private string _jsonFilePath;
+        private bool _createNewConfigFileIsNotExist;
 
-        public JSONWQDefaultValueProvider(string jsonFilePath)
+        public JSONWQDefaultValueProvider(string jsonFilePath, bool createNewConfigFileIfNotExist)
         {
             _jsonFilePath = jsonFilePath;
+            _createNewConfigFileIsNotExist = createNewConfigFileIfNotExist;
         }
 
         public string Name
@@ -266,7 +268,17 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             }
             else
             {
-                throw new FileNotFoundException("JSON provider initialize fail. The provided path " + _jsonFilePath + " could not be found.");
+                if(_createNewConfigFileIsNotExist)
+                {
+                    var noDataModel = new WQDefaultValueModel();
+                    this.SaveDefaultValueConfiguration(noDataModel);
+                    _data = noDataModel;
+                }
+                else
+                {
+                    throw new FileNotFoundException("JSON provider initialize fail. The provided path " + _jsonFilePath + " could not be found.");
+                }
+                
             }
         }
     }
