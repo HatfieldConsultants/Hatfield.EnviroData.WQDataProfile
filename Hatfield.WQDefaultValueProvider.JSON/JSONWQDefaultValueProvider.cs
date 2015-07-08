@@ -1,149 +1,136 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-
+﻿using Hatfield.EnviroData.WQDataProfile;
 using Newtonsoft.Json;
-
-using Hatfield.EnviroData.WQDataProfile;
+using System;
+using System.IO;
 
 namespace Hatfield.WQDefaultValueProvider.JSON
 {
     public class JSONWQDefaultValueProvider : IWQDefaultValueProvider
     {
         private WQDefaultValueModel _data;
+        private string _jsonFilePath;
 
         public JSONWQDefaultValueProvider(string jsonFilePath)
         {
-            if (File.Exists(jsonFilePath))
-            {
-                try
-                {
-                    using (FileStream fs = File.Open(jsonFilePath, FileMode.Open))
-                    {
-                        using (StreamReader reader = new StreamReader(fs))
-                        {
-                            using (JsonReader jr = new JsonTextReader(reader))
-                            {
-                                JsonSerializer serializer = new JsonSerializer();
-                                _data = serializer.Deserialize<WQDefaultValueModel>(jr);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new InvalidDataException("The provided json file is not valid." + ex.StackTrace);
-                }
-            }
-            else
-            {
-                throw new FileNotFoundException("The provided path " + jsonFilePath + " could not be found.");
-            }
+            _jsonFilePath = jsonFilePath;
         }
 
         public string Name
         {
-            get {
+            get
+            {
                 return "JSON Default Value Provider";
             }
         }
 
         public string DefaultPersonFirstName
         {
-            get {
+            get
+            {
                 return _data.DefaultPersonFirstName;
             }
         }
 
         public string DefaultPersonMiddleName
         {
-            get {
+            get
+            {
                 return _data.DefaultPersonMiddleName;
             }
         }
 
         public string DefaultPersonLastName
         {
-            get {
+            get
+            {
                 return _data.DefaultPersonLastName;
             }
         }
 
         public string DefaultOrganizationTypeCV
         {
-            get {
+            get
+            {
                 return _data.DefaultOrganizationTypeCV;
             }
         }
 
         public string DefaultOrganizationName
         {
-            get {
+            get
+            {
                 return _data.DefaultOrganizationName;
             }
         }
 
         public string DefaultOrganizationCode
         {
-            get {
+            get
+            {
                 return _data.DefaultOrganizationCode;
             }
         }
 
         public string DefaultProcessingLevels
         {
-            get {
+            get
+            {
                 return _data.DefaultProcessingLevels;
             }
         }
 
         public string DefaultSamplingFeatureUUID
         {
-            get {
+            get
+            {
                 return _data.DefaultSamplingFeatureUUID;
             }
         }
 
         public string DefaultSamplingFeatureTypeCV
         {
-            get {
+            get
+            {
                 return _data.DefaultSamplingFeatureTypeCV;
             }
         }
 
         public string DefaultSamplingFeatureCode
         {
-            get {
+            get
+            {
                 return _data.DefaultSamplingFeatureCode;
             }
         }
 
         public string DefaultMethodTypeCV
         {
-            get {
+            get
+            {
                 return _data.DefaultMethodTypeCV;
             }
         }
 
         public string DefaultMethodCode
         {
-            get {
+            get
+            {
                 return _data.DefaultMethodCode;
             }
         }
 
         public string DefaultMethodName
         {
-            get {
+            get
+            {
                 return _data.DefaultMethodName;
             }
         }
 
         public string DefaultMethodDescription
         {
-            get {
+            get
+            {
                 return _data.DefaultMethodDescription;
             }
         }
@@ -223,10 +210,64 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             get { return _data.DefaultCVName; }
         }
 
-
         public WayToHandleNewData WayToHandleNewData
         {
             get { return _data.WayToHandleNewData; }
+        }
+
+        public bool SaveDefaultValueConfiguration(WQDefaultValueModel data)
+        {
+            _data = data;
+
+            var fileMode = File.Exists(_jsonFilePath) ? FileMode.Open : FileMode.CreateNew;
+
+            try
+            {
+                using (FileStream fs = File.Open(_jsonFilePath, fileMode))
+                using (StreamWriter sw = new StreamWriter(fs))
+                using (JsonWriter jw = new JsonTextWriter(sw))
+                {
+                    jw.Formatting = Formatting.Indented;
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jw, data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void Init()
+        {
+            if (File.Exists(_jsonFilePath))
+            {
+                try
+                {
+                    using (FileStream fs = File.Open(_jsonFilePath, FileMode.Open))
+                    {
+                        using (StreamReader reader = new StreamReader(fs))
+                        {
+                            using (JsonReader jr = new JsonTextReader(reader))
+                            {
+                                JsonSerializer serializer = new JsonSerializer();
+                                _data = serializer.Deserialize<WQDefaultValueModel>(jr);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidDataException("JSON provider initialize fail. The provided json file is not valid." + ex.StackTrace);
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("JSON provider initialize fail. The provided path " + _jsonFilePath + " could not be found.");
+            }
         }
     }
 }

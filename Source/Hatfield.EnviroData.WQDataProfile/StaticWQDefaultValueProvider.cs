@@ -252,5 +252,18 @@ namespace Hatfield.EnviroData.WQDataProfile
                 return WayToHandleNewData.CreateInstanceForNewData;
             }        
         }
+
+
+        public bool SaveDefaultValueConfiguration(WQDefaultValueModel data)
+        {
+            //For static values, do nothing
+            return true;
+        }
+
+
+        public void Init()
+        {
+            //Do nothing to initialize
+        }
     }
 }

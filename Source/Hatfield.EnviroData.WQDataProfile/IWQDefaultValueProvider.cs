@@ -55,5 +55,8 @@ namespace Hatfield.EnviroData.WQDataProfile
         string DefaultCVName { get; }
 
         WayToHandleNewData WayToHandleNewData { get; }
+
+        void Init();
+        bool SaveDefaultValueConfiguration(WQDefaultValueModel data);
     }
 }
