@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A275C8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.WQDataProfile", "Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj", "{5413D97C-1DA9-48B7-B1E8-547B4DAA463B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProvider.JSON", "Hatfield.WQDefaultValueProvider.JSON\Hatfield.WQDefaultValueProvider.JSON.csproj", "{954056AF-92EC-48C0-B537-5F636DD464F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProvider.JSON", "Source\Hatfield.WQDefaultValueProvider.JSON\Hatfield.WQDefaultValueProvider.JSON.csproj", "{954056AF-92EC-48C0-B537-5F636DD464F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
