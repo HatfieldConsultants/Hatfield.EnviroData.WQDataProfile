@@ -45,6 +45,8 @@ packages/
 *.pidb
 *.log
 *.scc
+*.nupkg
+*.nuspec
 
 # OS generated files #
 .DS_Store*
