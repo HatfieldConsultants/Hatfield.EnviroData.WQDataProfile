@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.WQDataP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProvider.JSON", "Source\Hatfield.WQDefaultValueProvider.JSON\Hatfield.WQDefaultValueProvider.JSON.csproj", "{954056AF-92EC-48C0-B537-5F636DD464F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProvider.JSON.Test", "Test\Hatfield.WQDefaultValueProvider.JSON.Test\Hatfield.WQDefaultValueProvider.JSON.Test.csproj", "{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{954056AF-92EC-48C0-B537-5F636DD464F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{954056AF-92EC-48C0-B537-5F636DD464F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{954056AF-92EC-48C0-B537-5F636DD464F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
