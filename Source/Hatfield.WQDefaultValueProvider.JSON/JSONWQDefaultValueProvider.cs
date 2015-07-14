@@ -247,7 +247,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             try
             {
                 using (FileStream fs = File.Open(_jsonFilePath, fileMode))
-                using (StreamWriter sw = new StreamWriter(fs))
+                using (StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8))
                 using (JsonWriter jw = new JsonTextWriter(sw))
                 {
                     jw.Formatting = Formatting.Indented;
@@ -276,7 +276,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                 {
                     using (FileStream fs = File.Open(_jsonFilePath, FileMode.Open))
                     {
-                        using (StreamReader reader = new StreamReader(fs))
+                        using (StreamReader reader = new StreamReader(fs, System.Text.Encoding.UTF8))
                         {
                             using (JsonReader jr = new JsonTextReader(reader))
                             {
@@ -296,7 +296,11 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                 if(_createNewConfigFileIsNotExist)
                 {
                     var noDataModel = new WQDefaultValueModel();
-                    this.SaveDefaultValueConfiguration(noDataModel);
+                    var saveSuccess = this.SaveDefaultValueConfiguration(noDataModel);
+                    if(!saveSuccess)
+                    {
+                        throw new InvalidDataException("Save JSON provider data fail, please contact the EIS group");
+                    }
                     _data = noDataModel;
                 }
                 else
