@@ -213,6 +213,26 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             get { return _data.DefaultCVName; }
         }
 
+        public string DefaultSRSCode
+        {
+            get { return _data.DefaultSRSCode; }
+        }
+
+        public string DefaultSRSName
+        {
+            get { return _data.DefaultSRSName; }
+        }
+
+        public string DefaultSRSDescription
+        {
+            get { return _data.DefaultSRSDescription; }
+        }
+
+        public string DefaultSRSLink
+        {
+            get { return _data.DefaultSRSLink; }
+        }
+
         public WayToHandleNewData WayToHandleNewData
         {
             get { return _data.WayToHandleNewData; }

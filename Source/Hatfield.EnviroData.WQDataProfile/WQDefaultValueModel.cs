@@ -52,6 +52,12 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string DefaultCVTerm { get; set; }
         public string DefaultCVName { get; set; }
 
+        //Spatial Reference Default Values
+        public string DefaultSRSCode { get; set; }
+        public string DefaultSRSName { get; set; }
+        public string DefaultSRSDescription { get; set; }
+        public string DefaultSRSLink { get; set; }
+
         public WayToHandleNewData WayToHandleNewData { get; set; }
     }
 }

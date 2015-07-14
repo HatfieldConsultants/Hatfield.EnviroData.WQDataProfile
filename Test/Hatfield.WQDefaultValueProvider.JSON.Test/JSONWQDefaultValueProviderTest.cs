@@ -23,6 +23,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON.Test
             var provider = new JSONWQDefaultValueProvider(appDataFolder, true);
 
             Assert.AreEqual("JSON Default Value Provider", provider.Name);
+            Assert.AreEqual(provider.DefaultPersonFirstName, null);
         }
     }
 }

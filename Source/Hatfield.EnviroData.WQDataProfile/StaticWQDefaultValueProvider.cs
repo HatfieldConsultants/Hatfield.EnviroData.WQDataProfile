@@ -245,6 +245,27 @@ namespace Hatfield.EnviroData.WQDataProfile
             }
         }
 
+        public string DefaultSRSCode
+        {
+            get
+            { return "Unknown"; }
+        }
+        public string DefaultSRSName
+        {
+            get
+            { return "Unknown"; }
+        }
+        public string DefaultSRSDescription
+        {
+            get
+            { return "Unknown"; }
+        }
+        public string DefaultSRSLink
+        {
+            get
+            { return "Unknown"; }
+        }
+
         public WayToHandleNewData WayToHandleNewData
         {
             get 
