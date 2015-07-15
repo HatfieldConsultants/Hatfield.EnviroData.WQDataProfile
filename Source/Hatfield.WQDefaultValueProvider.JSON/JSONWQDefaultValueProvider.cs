@@ -19,204 +19,73 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         }
 
         public string Name
-        {
-            get
-            {
-                return "JSON Default Value Provider";
-            }
-        }
+        { get { return "JSON Default Value Provider"; } }
 
-        public string DefaultPersonFirstName
-        {
-            get
-            {
-                return _data.DefaultPersonFirstName;
-            }
-        }
+        // Action Default Values
+        public string ActionTypeCVSampleCollection { get { return _data.ActionTypeCVSampleCollection; } }
+        public string ActionRelationshipTypeCVSampleCollection { get { return _data.ActionRelationshipTypeCVSampleCollection; } }
 
-        public string DefaultPersonMiddleName
-        {
-            get
-            {
-                return _data.DefaultPersonMiddleName;
-            }
-        }
+        public string ActionTypeCVChemistry { get { return _data.ActionTypeCVChemistry; } }
+        public string ActionRelationshipTypeCVChemistry { get { return _data.ActionRelationshipTypeCVChemistry; } }
 
-        public string DefaultPersonLastName
-        {
-            get
-            {
-                return _data.DefaultPersonLastName;
-            }
-        }
+        // Person Default Values
+        public string DefaultPersonFirstName { get { return _data.DefaultPersonFirstName; } }
+        public string DefaultPersonMiddleName { get { return _data.DefaultPersonMiddleName; } }
+        public string DefaultPersonLastName { get { return _data.DefaultPersonLastName; } }
 
-        public string DefaultOrganizationTypeCV
-        {
-            get
-            {
-                return _data.DefaultOrganizationTypeCV;
-            }
-        }
+        // Organization Default Values
+        public string OrganizationTypeCVSampleCollection { get { return _data.OrganizationTypeCVSampleCollection; } }
+        public string OrganizationNameSampleCollection { get { return _data.OrganizationNameSampleCollection; } }
 
-        public string DefaultOrganizationName
-        {
-            get
-            {
-                return _data.DefaultOrganizationName;
-            }
-        }
+        public string OrganizationTypeCVChemistry { get { return _data.OrganizationTypeCVChemistry; } }
 
-        public string DefaultOrganizationCode
-        {
-            get
-            {
-                return _data.DefaultOrganizationCode;
-            }
-        }
+        // Processing Level Default Values
+        public string DefaultProcessingLevelCode { get { return _data.DefaultProcessingLevelCode; } }
 
-        public string DefaultProcessingLevels
-        {
-            get
-            {
-                return _data.DefaultProcessingLevels;
-            }
-        }
+        // Result Default Values
+        public string ResultTypeCVSampleCollection { get { return _data.ResultTypeCVSampleCollection; } }
+        public string ResultSampledMediumCVSampleCollection { get { return _data.ResultSampledMediumCVSampleCollection; } }
 
-        public string DefaultSamplingFeatureUUID
-        {
-            get
-            {
-                return _data.DefaultSamplingFeatureUUID;
-            }
-        }
+        public string ResultTypeCVChemistry { get { return _data.ResultTypeCVChemistry; } }
+        public string ResultSampledMediumCVChemistry { get { return _data.ResultSampledMediumCVChemistry; } }
 
-        public string DefaultSamplingFeatureTypeCV
-        {
-            get
-            {
-                return _data.DefaultSamplingFeatureTypeCV;
-            }
-        }
+        // Sampling Feature Default Values
+        public string DefaultSamplingFeatureTypeCVSampleCollection { get { return _data.DefaultSamplingFeatureTypeCVSampleCollection; } }
 
-        public string DefaultSamplingFeatureCode
-        {
-            get
-            {
-                return _data.DefaultSamplingFeatureCode;
-            }
-        }
+        public string DefaultSamplingFeatureTypeCVChemistry { get { return _data.DefaultSamplingFeatureTypeCVChemistry; } }
 
-        public string DefaultMethodTypeCV
-        {
-            get
-            {
-                return _data.DefaultMethodTypeCV;
-            }
-        }
+        public Guid DefaultSamplingFeatureUUID { get { return _data.DefaultSamplingFeatureUUID; } }
+        public string DefaultSamplingFeatureCode { get { return _data.DefaultSamplingFeatureCode; } }
 
-        public string DefaultMethodCode
-        {
-            get
-            {
-                return _data.DefaultMethodCode;
-            }
-        }
+        // Measurement Result Default Values
+        public string DefaultMethodTypeCVSampleCollection { get { return _data.DefaultMethodTypeCVSampleCollection; } }
+        public string MeasurementResultCensorCodeCVChemistry { get { return _data.MeasurementResultCensorCodeCVChemistry; } }
+        public string MeasurementResultQualityCodeCVChemistry { get { return _data.MeasurementResultQualityCodeCVChemistry; } }
 
-        public string DefaultMethodName
-        {
-            get
-            {
-                return _data.DefaultMethodName;
-            }
-        }
+        // Method Default Values
+        public string MeasurementResultAggregationStatisticCVChemistry { get { return _data.MeasurementResultAggregationStatisticCVChemistry; } }
 
-        public string DefaultMethodDescription
-        {
-            get
-            {
-                return _data.DefaultMethodDescription;
-            }
-        }
+        public string DefaultMethodTypeCVChemistry { get { return _data.DefaultMethodTypeCVChemistry; } }
 
-        public string DefaultMethodLink
-        {
-            get { return _data.DefaultMethodLink; }
-        }
+        // Variable Default Values
+        public string DefaultVariableTypeCVSampleCollection { get { return _data.DefaultVariableTypeCVSampleCollection; } }
 
-        public string DefaultMethodOrganizationID
-        {
-            get { return _data.DefaultMethodOrganizationID; }
-        }
+        public string DefaultVariableTypeCVChemistry { get { return _data.DefaultVariableTypeCVChemistry; } }
 
-        public string DefaultVariableTypeCV
-        {
-            get { return _data.DefaultVariableTypeCV; }
-        }
+        public string DefaultVariableCode { get { return _data.DefaultVariableCode; } }
+        public string DefaultVariableNameCV { get { return _data.DefaultVariableNameCV; } }
+        public string DefaultVariableSpeciationCV { get { return _data.DefaultVariableSpeciationCV; } }
+        public double DefaultVariableNoDataValue { get { return _data.DefaultVariableNoDataValue; } }
 
-        public string DefaultVariableCode
-        {
-            get { return _data.DefaultVariableCode; }
-        }
+        // Unit Default Values
+        public string DefaultUnitsTypeCVSampleCollection { get { return _data.DefaultUnitsTypeCVSampleCollection; } }
 
-        public string DefaultVariableNameCV
-        {
-            get { return _data.DefaultVariableNameCV; }
-        }
+        public string DefaultUnitsTypeCVChemistry { get { return _data.DefaultUnitsTypeCVChemistry; } }
 
-        public string DefaultVariableDefinition
-        {
-            get { return _data.DefaultVariableDefinition; }
-        }
+        // Dataset Default Values
+        public string DefaultDatasetTypeCV { get { return _data.DefaultDatasetTypeCV; } }
 
-        public string DefaultVariableSpeciationCV
-        {
-            get { return _data.DefaultVariableSpeciationCV; }
-        }
-
-        public double DefaultVariableNoDataValue
-        {
-            get { return _data.DefaultVariableNoDataValue; }
-        }
-
-        public string DefaultUnitsTypeCV
-        {
-            get { return _data.DefaultUnitsTypeCV; }
-        }
-
-        public string DefaultUnitsAbbreviation
-        {
-            get { return _data.DefaultUnitsAbbreviation; }
-        }
-
-        public string DefaultUnitsName
-        {
-            get { return _data.DefaultUnitsName; }
-        }
-
-        public string DefaultUnitsLink
-        {
-            get { return _data.DefaultUnitsLink; }
-        }
-
-        public string DefaultCVUnitsType
-        {
-            get { return _data.DefaultCVUnitsType; }
-        }
-
-        public string DefaultCVTerm
-        {
-            get { return _data.DefaultCVTerm; }
-        }
-
-        public string DefaultCVName
-        {
-            get { return _data.DefaultCVName; }
-        }
-
-        public WayToHandleNewData WayToHandleNewData
-        {
-            get { return _data.WayToHandleNewData; }
-        }
+        public WayToHandleNewData WayToHandleNewData { get { return _data.WayToHandleNewData; } }
 
         public bool SaveDefaultValueConfiguration(WQDefaultValueModel data)
         {
@@ -236,7 +105,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                     serializer.Serialize(jw, data);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -273,7 +142,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             }
             else
             {
-                if(_createNewConfigFileIsNotExist)
+                if (_createNewConfigFileIsNotExist)
                 {
                     var noDataModel = new WQDefaultValueModel();
                     this.SaveDefaultValueConfiguration(noDataModel);
@@ -283,7 +152,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                 {
                     throw new FileNotFoundException("JSON provider initialize fail. The provided path " + _jsonFilePath + " could not be found.");
                 }
-                
+
             }
         }
     }

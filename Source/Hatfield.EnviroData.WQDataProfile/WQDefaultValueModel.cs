@@ -7,50 +7,69 @@ namespace Hatfield.EnviroData.WQDataProfile
 {
     public class WQDefaultValueModel
     {
-        //Person Default Values
+        // Action Default Values
+        public string ActionTypeCVSampleCollection { get; set; }
+        public string ActionRelationshipTypeCVSampleCollection { get; set; }
+
+        public string ActionTypeCVChemistry { get; set; }
+        public string ActionRelationshipTypeCVChemistry { get; set; }
+
+        // Person Default Values
         public string DefaultPersonFirstName { get; set; }
         public string DefaultPersonMiddleName { get; set; }
         public string DefaultPersonLastName { get; set; }
 
-        //Organization Default Values
-        public string DefaultOrganizationTypeCV { get; set; }
-        public string DefaultOrganizationName { get; set; }
-        public string DefaultOrganizationCode { get; set; }
+        // Organization Default Values
+        public string OrganizationTypeCVSampleCollection { get; set; }
+        public string OrganizationNameSampleCollection { get; set; }
 
-        //Processing Level Default Values
-        public string DefaultProcessingLevels { get; set; }
+        public string OrganizationTypeCVChemistry { get; set; }
 
-        //Sampling Features Default Values
-        public string DefaultSamplingFeatureUUID { get; set; }
-        public string DefaultSamplingFeatureTypeCV { get; set; }
+        // Processing Level Default Values
+        public string DefaultProcessingLevelCode { get; set; }
+
+        // Result Default Values
+        public string ResultTypeCVSampleCollection { get; set; }
+        public string ResultSampledMediumCVSampleCollection { get; set; }
+
+        public string ResultTypeCVChemistry { get; set; }
+        public string ResultSampledMediumCVChemistry { get; set; }
+
+        // Sampling Feature Default Values
+        public string DefaultSamplingFeatureTypeCVSampleCollection { get; set; }
+
+        public string DefaultSamplingFeatureTypeCVChemistry { get; set; }
+
+        public Guid DefaultSamplingFeatureUUID { get; set; }
         public string DefaultSamplingFeatureCode { get; set; }
 
-        //Method Default Values
-        public string DefaultMethodTypeCV { get; set; }
-        public string DefaultMethodCode { get; set; }
-        public string DefaultMethodName { get; set; }
-        public string DefaultMethodDescription { get; set; }
-        public string DefaultMethodLink { get; set; }
-        public string DefaultMethodOrganizationID { get; set; }
+        // Measurement Result Default Values
+        public string MeasurementResultCensorCodeCVChemistry { get; set; }
+        public string MeasurementResultQualityCodeCVChemistry { get; set; }
+        public string MeasurementResultAggregationStatisticCVChemistry { get; set; }
 
-        //Variable Default Values
-        public string DefaultVariableTypeCV { get; set; }
+        // Method Default Values
+        public string DefaultMethodTypeCVSampleCollection { get; set; }
+
+        public string DefaultMethodTypeCVChemistry { get; set; }
+
+        // Variable Default Values
+        public string DefaultVariableTypeCVSampleCollection { get; set; }
+
+        public string DefaultVariableTypeCVChemistry { get; set; }
+
         public string DefaultVariableCode { get; set; }
         public string DefaultVariableNameCV { get; set; }
-        public string DefaultVariableDefinition { get; set; }
         public string DefaultVariableSpeciationCV { get; set; }
         public double DefaultVariableNoDataValue { get; set; }
 
-        //Units Default Values
-        public string DefaultUnitsTypeCV { get; set; }
-        public string DefaultUnitsAbbreviation { get; set; }
-        public string DefaultUnitsName { get; set; }
-        public string DefaultUnitsLink { get; set; }
+        // Unit Default Values
+        public string DefaultUnitsTypeCVSampleCollection { get; set; }
 
-        //CV Default Values
-        public string DefaultCVUnitsType { get; set; }
-        public string DefaultCVTerm { get; set; }
-        public string DefaultCVName { get; set; }
+        public string DefaultUnitsTypeCVChemistry { get; set; }
+
+        // Dataset Default Values
+        public string DefaultDatasetTypeCV { get; set; }
 
         public WayToHandleNewData WayToHandleNewData { get; set; }
     }
