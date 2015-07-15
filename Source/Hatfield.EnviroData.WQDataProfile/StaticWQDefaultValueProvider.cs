@@ -8,263 +8,70 @@ namespace Hatfield.EnviroData.WQDataProfile
 {
     public class StaticWQDefaultValueProvider : IWQDefaultValueProvider
     {
-        public string Name
-        {
-            get {
-                return "Static Water Quality Default Value Provider";
-            }
-        }
+        public string Name { get { return "Static Water Quality Default Value Provider"; } }
 
-        public string DefaultPersonFirstName
-        {
-            get {
-                return "Unknown";
-            }
-        }
+        // Action Default Values
+        public string ActionTypeCVSampleCollection { get { return "Specimen collection"; } }
+        public string ActionRelationshipTypeCVSampleCollection { get { return "Is related to"; } }
+        public string ActionTypeCVChemistry { get { return "Specimen analysis"; } }
+        public string ActionRelationshipTypeCVChemistry { get { return "Is child of"; } }
 
-        public string DefaultPersonMiddleName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Person Default Values
+        public string DefaultPersonFirstName { get { return "Unknown"; } }
+        public string DefaultPersonMiddleName { get { return "Unknown"; } }
+        public string DefaultPersonLastName { get { return "Unknown"; } }
 
-        public string DefaultPersonLastName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Organization Default Values
+        public string OrganizationTypeCVSampleCollection { get { return "Company"; } }
+        public string OrganizationNameSampleCollection { get { return "Hatfield"; } }
 
-        public string DefaultOrganizationTypeCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public string OrganizationTypeCVChemistry { get { return "Laboratory"; } }
 
-        public string DefaultOrganizationName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Processing Level Default Values
+        public string DefaultProcessingLevelCode { get { return "Unknown"; } }
 
-        public string DefaultOrganizationCode
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Result Default Values
+        public string ResultTypeCVSampleCollection { get { return "Measurement"; } }
+        public string ResultSampledMediumCVSampleCollection { get { return "Liquid aqueous"; } }
 
-        public string DefaultProcessingLevels
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public string ResultTypeCVChemistry { get { return "Measurement"; } }
+        public string ResultSampledMediumCVChemistry { get { return "Liquid aqueous"; } }
 
-        public string DefaultSamplingFeatureUUID
-        {
-            get {
-                return System.Guid.Empty.ToString();
-            }
-        }
+        // Sampling Feature Default Values
+        public string DefaultSamplingFeatureTypeCVSampleCollection { get { return "Specimen"; } }
 
-        public string DefaultSamplingFeatureTypeCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public string DefaultSamplingFeatureTypeCVChemistry { get { return "Site"; } }
 
-        public string DefaultSamplingFeatureCode
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public Guid DefaultSamplingFeatureUUID { get { return System.Guid.Empty; } }
+        public string DefaultSamplingFeatureCode { get { return "Unknown"; } }
 
-        public string DefaultMethodTypeCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Measurement Result Default Values
+        public string MeasurementResultCensorCodeCVChemistry { get { return "Not censored"; } }
+        public string MeasurementResultQualityCodeCVChemistry { get { return "Unknown"; } }
+        public string MeasurementResultAggregationStatisticCVChemistry { get { return "Unknown"; } }
 
-        public string DefaultMethodCode
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Method Default Values
+        public string DefaultMethodTypeCVSampleCollection { get { return "Specimen collection"; } }
 
-        public string DefaultMethodName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public string DefaultMethodTypeCVChemistry { get { return "Specimen analysis"; } }
 
-        public string DefaultMethodDescription
-        {
-            get
-            {
-                return null;
-            }
-        }
+        // Variable Default Values
+        public string DefaultVariableTypeCVSampleCollection { get { return "Chemistry"; } }
 
-        public string DefaultMethodLink
-        {
-            get
-            {
-                return null;
-            }
-        }
+        public string DefaultVariableTypeCVChemistry { get { return "Chemistry"; } }
 
-        public string DefaultMethodOrganizationID
-        {
-            get
-            {
-                return null;
-            }
-        }
+        public string DefaultVariableCode { get { return "Unknown"; } }
+        public string DefaultVariableNameCV { get { return "Unknown"; } }
+        public string DefaultVariableSpeciationCV { get { return "Unknown"; } }
+        public double DefaultVariableNoDataValue { get { return double.MinValue; } }
 
-        public string DefaultVariableTypeCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        // Unit Default Values
+        public string DefaultUnitsTypeCVSampleCollection { get { return "Dimensionless"; } }
 
-        public string DefaultVariableCode
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
+        public string DefaultUnitsTypeCVChemistry { get { return "Action"; } }
 
-        public string DefaultVariableNameCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultVariableDefinition
-        {
-            get
-            {
-                return null;
-            }
-        }
-
-        public string DefaultVariableSpeciationCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public double DefaultVariableNoDataValue
-        {
-            get
-            {
-                return double.MinValue;
-            }
-        }
-
-        public string DefaultUnitsTypeCV
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultUnitsAbbreviation
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultUnitsName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultUnitsLink
-        {
-            get
-            {
-                return null;
-            }
-        }
-
-        public string DefaultCVUnitsType
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultCVTerm
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultCVName
-        {
-            get
-            {
-                return "Unknown";
-            }
-        }
-
-        public string DefaultSRSCode
-        {
-            get
-            { return "Unknown"; }
-        }
-        public string DefaultSRSName
-        {
-            get
-            { return "Unknown"; }
-        }
-        public string DefaultSRSDescription
-        {
-            get
-            { return "Unknown"; }
-        }
-        public string DefaultSRSLink
-        {
-            get
-            { return "Unknown"; }
-        }
+        // Dataset Default Values
+        public string DefaultDatasetTypeCV { get { return "Other"; } }
 
         public WayToHandleNewData WayToHandleNewData
         {
