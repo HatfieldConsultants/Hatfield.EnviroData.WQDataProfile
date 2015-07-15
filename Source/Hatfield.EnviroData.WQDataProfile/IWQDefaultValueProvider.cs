@@ -9,56 +9,69 @@ namespace Hatfield.EnviroData.WQDataProfile
     {
         string Name { get; }
 
-        //Person Default Values
+        // Action Default Values
+        string ActionTypeCVSampleCollection { get; }
+        string ActionRelationshipTypeCVSampleCollection { get; }
+
+        string ActionTypeCVChemistry { get; }
+        string ActionRelationshipTypeCVChemistry { get; }
+
+        // Person Default Values
         string DefaultPersonFirstName { get; }
         string DefaultPersonMiddleName { get; }
         string DefaultPersonLastName { get; }
 
-        //Organization Default Values
-        string DefaultOrganizationTypeCV { get; }
-        string DefaultOrganizationName { get; }
-        string DefaultOrganizationCode { get; }
+        // Organization Default Values
+        string OrganizationTypeCVSampleCollection { get; }
+        string OrganizationNameSampleCollection { get; }
 
-        //Processing Level Default Values
-        string DefaultProcessingLevels { get; }
+        string OrganizationTypeCVChemistry { get; }
 
-        //Sampling Features Default Values
-        string DefaultSamplingFeatureUUID { get; }
-        string DefaultSamplingFeatureTypeCV { get; }
+        // Processing Level Default Values
+        string DefaultProcessingLevelCode { get; }
+
+        // Result Default Values
+        string ResultTypeCVSampleCollection { get; }
+        string ResultSampledMediumCVSampleCollection { get; }
+
+        string ResultTypeCVChemistry { get; }
+        string ResultSampledMediumCVChemistry { get; }
+
+        // Sampling Feature Default Values
+        string DefaultSamplingFeatureTypeCVSampleCollection { get; }
+
+        string DefaultSamplingFeatureTypeCVChemistry { get; }
+
+        Guid DefaultSamplingFeatureUUID { get; }
         string DefaultSamplingFeatureCode { get; }
 
-        //Method Default Values
-        string DefaultMethodTypeCV { get; }
-        string DefaultMethodCode { get; }
-        string DefaultMethodName { get; }
-        string DefaultMethodDescription { get; }
-        string DefaultMethodLink { get; }
-        string DefaultMethodOrganizationID { get; }
+        // Measurement Result Default Values
+        string MeasurementResultCensorCodeCVChemistry { get; }
+        string MeasurementResultQualityCodeCVChemistry { get; }
+        string MeasurementResultAggregationStatisticCVChemistry { get; }
 
-        //Variable Default Values
-        string DefaultVariableTypeCV { get; }
+        // Method Default Values
+        string DefaultMethodTypeCVSampleCollection { get; }
+
+        string DefaultMethodTypeCVChemistry { get; }
+
+        // Variable Default Values
+        string DefaultVariableTypeCVSampleCollection { get; }
+
+        string DefaultVariableTypeCVChemistry { get; }
+
         string DefaultVariableCode { get; }
         string DefaultVariableNameCV { get; }
-        string DefaultVariableDefinition { get; }
         string DefaultVariableSpeciationCV { get; }
         double DefaultVariableNoDataValue { get; }
 
-        //Units Default Values
-        string DefaultUnitsTypeCV { get; }
-        string DefaultUnitsAbbreviation { get; }
-        string DefaultUnitsName { get; }
-        string DefaultUnitsLink { get; }
+        // Unit Default Values
+        string DefaultUnitsTypeCVSampleCollection { get; }
 
-        //CV Default Values
-        string DefaultCVUnitsType { get; }
-        string DefaultCVTerm { get; }
-        string DefaultCVName { get; }
+        string DefaultUnitsTypeCVChemistry { get; }
 
-        //Spatial Reference Default Values
-        string DefaultSRSCode { get; }
-        string DefaultSRSName { get; }
-        string DefaultSRSDescription { get; }
-        string DefaultSRSLink { get; }
+        // Dataset Default Values
+        string DefaultDatasetTypeCV { get; }
 
         WayToHandleNewData WayToHandleNewData { get; }
 
