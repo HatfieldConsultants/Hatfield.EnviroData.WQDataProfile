@@ -73,6 +73,12 @@ namespace Hatfield.EnviroData.WQDataProfile
         // Dataset Default Values
         public string DefaultDatasetTypeCV { get { return "Other"; } }
 
+        //Spatial Reference Default Values
+        public string DefaultSRSCode { get { return "Unknown"; } }
+        public string DefaultSRSName { get { return "Unknown"; } }
+        public string DefaultSRSDescription { get { return "Unknown"; } }
+        public string DefaultSRSLink { get { return "Unknown"; } }
+
         public WayToHandleNewData WayToHandleNewData
         {
             get 
