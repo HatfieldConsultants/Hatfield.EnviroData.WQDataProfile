@@ -19,6 +19,11 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string DefaultPersonMiddleName { get; set; }
         public string DefaultPersonLastName { get; set; }
 
+        //Organization Default Values
+        public string DefaultOrganizationTypeCV { get; set; }
+        public string DefaultOrganizationName { get; set; }
+        public string DefaultOrganizationCode { get; set; }
+
         // Organization Default Values
         public string OrganizationTypeCVSampleCollection { get; set; }
         public string OrganizationNameSampleCollection { get; set; }

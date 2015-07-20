@@ -21,6 +21,31 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string DefaultPersonMiddleName { get { return "Unknown"; } }
         public string DefaultPersonLastName { get { return "Unknown"; } }
 
+        public string DefaultOrganizationTypeCV
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
+        public string DefaultOrganizationName
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
+        public string DefaultOrganizationCode
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
+
         // Organization Default Values
         public string OrganizationTypeCVSampleCollection { get { return "Company"; } }
         public string OrganizationNameSampleCollection { get { return "Hatfield"; } }
@@ -28,6 +53,7 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string OrganizationTypeCVChemistry { get { return "Laboratory"; } }
 
         // Processing Level Default Values
+        public string DefaultProcessingLevels { get { return "Unknown"; } }
         public string DefaultProcessingLevelCode { get { return "Unknown"; } }
 
         // Result Default Values

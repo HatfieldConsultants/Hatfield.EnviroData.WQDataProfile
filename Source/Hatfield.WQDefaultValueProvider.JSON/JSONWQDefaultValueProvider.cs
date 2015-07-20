@@ -34,6 +34,30 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string DefaultPersonMiddleName { get { return _data.DefaultPersonMiddleName; } }
         public string DefaultPersonLastName { get { return _data.DefaultPersonLastName; } }
 
+        public string DefaultOrganizationTypeCV
+        {
+            get
+            {
+                return _data.DefaultOrganizationTypeCV;
+            }
+        }
+
+        public string DefaultOrganizationName
+        {
+            get
+            {
+                return _data.DefaultOrganizationName;
+            }
+        }
+
+        public string DefaultOrganizationCode
+        {
+            get
+            {
+                return _data.DefaultOrganizationCode;
+            }
+        }
+
         // Organization Default Values
         public string OrganizationTypeCVSampleCollection { get { return _data.OrganizationTypeCVSampleCollection; } }
         public string OrganizationNameSampleCollection { get { return _data.OrganizationNameSampleCollection; } }
@@ -41,6 +65,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string OrganizationTypeCVChemistry { get { return _data.OrganizationTypeCVChemistry; } }
 
         // Processing Level Default Values
+        public string DefaultProcessingLevels { get { return _data.DefaultProcessingLevelCode; } }
         public string DefaultProcessingLevelCode { get { return _data.DefaultProcessingLevelCode; } }
 
         // Result Default Values
