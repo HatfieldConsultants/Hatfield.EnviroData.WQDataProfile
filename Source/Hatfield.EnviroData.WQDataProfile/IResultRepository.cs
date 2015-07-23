@@ -8,5 +8,6 @@ namespace Hatfield.EnviroData.WQDataProfile
 {
     public interface IResultRepository: IRepository<Result>
     {
+        IQueryable<Result> GetResultsBySiteAndAnalyte(int siteID, int analyteID);
     }
 }
