@@ -9,6 +9,6 @@ namespace Hatfield.EnviroData.WQDataProfile
 {
     public interface IDataVersioningHelper
     {
-        Hatfield.EnviroData.Core.Action CloneDataToNewVersion(Hatfield.EnviroData.Core.Action previousAction);
+        Hatfield.EnviroData.Core.Action CloneActionData(Hatfield.EnviroData.Core.Action previousAction);
     }
 }
