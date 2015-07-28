@@ -60,11 +60,13 @@
     <Compile Include="IUnitRepository.cs" />
     <Compile Include="IWQDataRepository.cs" />
     <Compile Include="IWQDefaultValueProvider.cs" />
+    <Compile Include="IWQVariableRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MeasurementResultValueRepository.cs" />
     <Compile Include="Repositories\ResultRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="Repositories\UnitRepository.cs" />
+    <Compile Include="Repositories\WQVariableRepository.cs" />
     <Compile Include="Repositories\WQDataRepository.cs" />
     <Compile Include="StaticWQDefaultValueProvider.cs" />
     <Compile Include="WayToHandleNewData.cs" />
