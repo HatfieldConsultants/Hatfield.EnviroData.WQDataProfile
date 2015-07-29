@@ -8,8 +8,10 @@ using Hatfield.EnviroData.Core.Repositories;
 
 namespace Hatfield.EnviroData.WQDataProfile.Repositories
 {
-    public class WQDataRepository : Repository<Core.Action>, IWQDataRepository
+    public class WQDataRepository : ActionRepository, IWQDataRepository
     {
+        private static readonly string ISChildOfRelationshipCV = "Is child of";
+
         public WQDataRepository(IDbContext dbContext)
             : base(dbContext)
         {
@@ -23,7 +25,16 @@ namespace Hatfield.EnviroData.WQDataProfile.Repositories
 
         public IEnumerable<Core.Action> GetAllWQSampleDataActions()
         {
-            throw new NotImplementedException("Get all WQ sample data actions function is not implemented");
+            var dbContext = (ODM2Entities)_dbContext;
+            var sampleCollectionActions = (from action in dbContext.Actions
+                                           join relatedAction in dbContext.RelatedActions
+                                           on action.ActionID equals relatedAction.RelatedActionID
+                                           where relatedAction.RelationshipTypeCV == ISChildOfRelationshipCV
+                                           select action)
+                                          .Distinct()
+                                          .OrderBy(x => x.BeginDateTime);
+
+            return sampleCollectionActions.ToList();
         }
 
 
