@@ -24,11 +24,38 @@ namespace Hatfield.EnviroData.WQDataProfile
             clonedAction.EndDateTimeUTCOffset = previousVersionAction.EndDateTimeUTCOffset;
             clonedAction.ActionDescription = previousVersionAction.ActionDescription;
             clonedAction.ActionFileLink = previousVersionAction.ActionFileLink;
-            clonedAction.ActionBies = previousVersionAction.ActionBies;
+            clonedAction.ActionBies = CloneActionBies(previousVersionAction, clonedAction);
 
             clonedAction.FeatureActions = CloneFeatureActions(previousVersionAction, clonedAction);
 
             return clonedAction;
+        }
+
+        private ICollection<ActionBy> CloneActionBies(Hatfield.EnviroData.Core.Action previousVersionAction,
+                                                    Hatfield.EnviroData.Core.Action newVersionAction)
+        {
+            if (previousVersionAction.ActionBies == null)
+            {
+                return null;
+            }
+            else
+            {
+                var clonedNewActionBies = new List<ActionBy>();
+                foreach(var actionByInPreviousVersion in previousVersionAction.ActionBies)
+                {
+                    var newActionBy = new ActionBy();
+
+                    newActionBy.Action = newVersionAction;
+                    newActionBy.Affiliation = actionByInPreviousVersion.Affiliation;
+                    newActionBy.AffiliationID = actionByInPreviousVersion.AffiliationID;
+                    newActionBy.IsActionLead = actionByInPreviousVersion.IsActionLead;
+                    newActionBy.RoleDescription = actionByInPreviousVersion.RoleDescription;
+
+                    clonedNewActionBies.Add(newActionBy);
+                }
+
+                return clonedNewActionBies;
+            }
         }
 
         private ICollection<FeatureAction> CloneFeatureActions(Hatfield.EnviroData.Core.Action previousVersionAction, 
