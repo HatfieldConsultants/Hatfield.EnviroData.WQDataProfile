@@ -54,7 +54,7 @@ namespace Hatfield.EnviroData.WQDataProfile
 
                     if(subVersionRelateAction == null)
                     {
-                        return originVersionActionData;
+                        return null;
                     }
 
                     var childVersion = subVersionRelateAction.Action1;
