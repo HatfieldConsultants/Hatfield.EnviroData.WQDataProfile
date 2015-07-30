@@ -29,6 +29,11 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string ActionTypeCVChemistry { get { return _data.ActionTypeCVChemistry; } }
         public string ActionRelationshipTypeCVChemistry { get { return _data.ActionRelationshipTypeCVChemistry; } }
 
+        public string ActionRelationshipTypeSubVersion
+        {
+            get { return _data.ActionRelationshipTypeSubVersion; }
+        }
+
         // Person Default Values
         public string DefaultPersonFirstName { get { return _data.DefaultPersonFirstName; } }
         public string DefaultPersonMiddleName { get { return _data.DefaultPersonMiddleName; } }
@@ -223,5 +228,8 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             }
         
         }
+
+
+        
     }
 }

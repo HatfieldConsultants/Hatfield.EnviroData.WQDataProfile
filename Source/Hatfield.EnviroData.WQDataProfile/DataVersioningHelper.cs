@@ -9,6 +9,13 @@ namespace Hatfield.EnviroData.WQDataProfile
 {
     public class DataVersioningHelper : IDataVersioningHelper
     {
+        private IWQDefaultValueProvider _wqDefaultValueProvider;
+
+        public DataVersioningHelper(IWQDefaultValueProvider wqDefaultValueProvider)
+        {
+            _wqDefaultValueProvider = wqDefaultValueProvider;
+        }
+
         public Hatfield.EnviroData.Core.Action CloneActionData(Hatfield.EnviroData.Core.Action previousVersionAction)
         {
             var clonedAction = new Hatfield.EnviroData.Core.Action();
@@ -30,6 +37,46 @@ namespace Hatfield.EnviroData.WQDataProfile
 
             return clonedAction;
         }
+
+        public Core.Action GetNextVersionActionData(Core.Action originVersionActionData)
+        {
+            if(originVersionActionData.RelatedActions == null || !originVersionActionData.RelatedActions.Any())
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    var subVersionRelateAction = originVersionActionData.RelatedActions
+                                                                        .Where(x => x.CV_RelationshipType.Name == _wqDefaultValueProvider.ActionRelationshipTypeSubVersion)
+                                                                        .SingleOrDefault();
+
+                    var childVersion = subVersionRelateAction.Action;
+                    return childVersion;
+                }
+                catch(Exception)
+                {
+                    throw new ArgumentException("Action data is not allowed to have multiple direct children verion");
+                }
+                
+            }
+            
+        }
+
+        public Core.Action GetLatestVersionActionData(Core.Action originVersionActionData)
+        {
+            var childVersion = GetNextVersionActionData(originVersionActionData);
+            if (childVersion == null)
+            {
+                return originVersionActionData;
+            }
+            else
+            {
+                return GetLatestVersionActionData(childVersion);
+            }
+        }
+
 
         private ICollection<ActionBy> CloneActionBies(Hatfield.EnviroData.Core.Action previousVersionAction,
                                                     Hatfield.EnviroData.Core.Action newVersionAction)
@@ -205,5 +252,8 @@ namespace Hatfield.EnviroData.WQDataProfile
                 return newVersionExtensionPropertyValules;
             }
         }
+
+
+        
     }
 }

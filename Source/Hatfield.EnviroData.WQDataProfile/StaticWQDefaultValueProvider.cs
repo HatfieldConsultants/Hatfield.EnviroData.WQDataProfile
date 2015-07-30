@@ -15,6 +15,8 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string ActionRelationshipTypeCVSampleCollection { get { return "Is related to"; } }
         public string ActionTypeCVChemistry { get { return "Specimen analysis"; } }
         public string ActionRelationshipTypeCVChemistry { get { return "Is child of"; } }
+        public string ActionRelationshipTypeSubVersion { get { return "Is new version of"; } }
+        
 
         // Person Default Values
         public string DefaultPersonFirstName { get { return "Unknown"; } }
@@ -125,5 +127,8 @@ namespace Hatfield.EnviroData.WQDataProfile
         {
             //Do nothing to initialize
         }
+
+
+        
     }
 }

@@ -13,6 +13,7 @@ namespace Hatfield.EnviroData.WQDataProfile
 
         public string ActionTypeCVChemistry { get; set; }
         public string ActionRelationshipTypeCVChemistry { get; set; }
+        public string ActionRelationshipTypeSubVersion { get; set; }
 
         // Person Default Values
         public string DefaultPersonFirstName { get; set; }
