@@ -70,7 +70,7 @@ namespace Hatfield.EnviroData.WQDataProfile.Test
             grandChildRelation.CV_RelationshipType = new CV_RelationshipType { 
                 Name = wqDefaultValueProvider.ActionRelationshipTypeSubVersion
             };
-            grandChildRelation.Action = grandActionData;
+            grandChildRelation.Action1 = grandActionData;
             childActionData.RelatedActions.Add(grandChildRelation);
 
             var childRelation = new RelatedAction();
@@ -78,7 +78,7 @@ namespace Hatfield.EnviroData.WQDataProfile.Test
             {
                 Name = wqDefaultValueProvider.ActionRelationshipTypeSubVersion
             };
-            childRelation.Action = childActionData;
+            childRelation.Action1 = childActionData;
             rootActionData.RelatedActions.Add(childRelation);            
         }
     }

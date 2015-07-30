@@ -52,7 +52,7 @@ namespace Hatfield.EnviroData.WQDataProfile
                                                                         .Where(x => x.CV_RelationshipType.Name == _wqDefaultValueProvider.ActionRelationshipTypeSubVersion)
                                                                         .SingleOrDefault();
 
-                    var childVersion = subVersionRelateAction.Action;
+                    var childVersion = subVersionRelateAction.Action1;
                     return childVersion;
                 }
                 catch(Exception)
