@@ -12,6 +12,7 @@ namespace Hatfield.EnviroData.WQDataProfile
     {
         IEnumerable<Hatfield.EnviroData.Core.Action> GetAllWQSampleDataActions();
         IEnumerable<Hatfield.EnviroData.Core.Action> GetAllWQAnalyteDataActions();
+        Hatfield.EnviroData.Core.Action GetActionById(int Id);
 
         int SaveChanges();
     }
