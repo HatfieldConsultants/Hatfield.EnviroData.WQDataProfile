@@ -11,6 +11,7 @@ namespace Hatfield.EnviroData.WQDataProfile.Repositories
     public class WQDataRepository : ActionRepository, IWQDataRepository
     {
         private static readonly string ISChildOfRelationshipCV = "Is child of";
+        private static readonly string IsRelatedToRelationshipCV = "Is related to";
 
         public WQDataRepository(IDbContext dbContext)
             : base(dbContext)
@@ -18,9 +19,19 @@ namespace Hatfield.EnviroData.WQDataProfile.Repositories
 
         }
 
+        //"Is related to" in this case means "Is parent of". Change later.
         public IEnumerable<Core.Action> GetAllWQAnalyteDataActions()
         {
-            throw new NotImplementedException("Get all WQ analyte data actions function is not implemented");
+            var dbContext = (ODM2Entities)_dbContext;
+            var sampleAnalysisActions = (from action in dbContext.Actions
+                                           join relatedAction in dbContext.RelatedActions
+                                           on action.ActionID equals relatedAction.RelatedActionID
+                                           where relatedAction.RelationshipTypeCV == IsRelatedToRelationshipCV
+                                           select action)
+                                             .Distinct()
+                                             .OrderBy(x => x.BeginDateTime);
+
+            return sampleAnalysisActions.ToList();
         }
 
         public IEnumerable<Core.Action> GetAllWQSampleDataActions()
