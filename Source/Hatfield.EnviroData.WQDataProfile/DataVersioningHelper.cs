@@ -82,6 +82,22 @@ namespace Hatfield.EnviroData.WQDataProfile
             }
         }
 
+        public int GetSubVersionCountOfAction(Hatfield.EnviroData.Core.Action originVersionActionData)
+        {
+            var numberOfVersion = 1;
+
+            var childVersion = GetNextVersionActionData(originVersionActionData);
+
+            while (childVersion != null)
+            {
+                numberOfVersion++;
+                childVersion = GetNextVersionActionData(childVersion);
+            }
+
+            return numberOfVersion;
+            
+        }
+
 
         private ICollection<ActionBy> CloneActionBies(Hatfield.EnviroData.Core.Action previousVersionAction,
                                                     Hatfield.EnviroData.Core.Action newVersionAction)

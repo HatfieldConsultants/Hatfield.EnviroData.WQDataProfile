@@ -51,6 +51,22 @@ namespace Hatfield.EnviroData.WQDataProfile.Test
             Assert.AreEqual(foundLatestVersionData, grandActionData);
             Assert.AreEqual(3, foundLatestVersionData.ActionID);
         }
+
+        [Test]
+        public void GetSubVersionCountOfActionTest()
+        {
+            var mockDefaultValueProvider = new Mock<IWQDefaultValueProvider>();
+            mockDefaultValueProvider.Setup(x => x.ActionRelationshipTypeSubVersion).Returns("is new version of");
+
+            var versionHelper = new DataVersioningHelper(mockDefaultValueProvider.Object);
+
+            CreateTestAction(mockDefaultValueProvider.Object);
+
+            var numberOfVersion = versionHelper.GetSubVersionCountOfAction(rootActionData);
+
+            Assert.NotNull(numberOfVersion);
+            Assert.AreEqual(3, numberOfVersion);
+        }
                 
         public void CreateTestAction(IWQDefaultValueProvider wqDefaultValueProvider)
         {

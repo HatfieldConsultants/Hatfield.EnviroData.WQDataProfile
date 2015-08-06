@@ -12,5 +12,6 @@ namespace Hatfield.EnviroData.WQDataProfile
         Hatfield.EnviroData.Core.Action CloneActionData(Hatfield.EnviroData.Core.Action previousAction);
         Hatfield.EnviroData.Core.Action GetNextVersionActionData(Hatfield.EnviroData.Core.Action originVersionActionData);
         Hatfield.EnviroData.Core.Action GetLatestVersionActionData(Hatfield.EnviroData.Core.Action originVersionActionData);
+        int GetSubVersionCountOfAction(Hatfield.EnviroData.Core.Action originVersionActionData);
     }
 }
