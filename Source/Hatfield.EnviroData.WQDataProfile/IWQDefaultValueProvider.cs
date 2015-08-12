@@ -15,11 +15,17 @@ namespace Hatfield.EnviroData.WQDataProfile
 
         string ActionTypeCVChemistry { get; }
         string ActionRelationshipTypeCVChemistry { get; }
+        string ActionRelationshipTypeSubVersion { get; }
 
         // Person Default Values
         string DefaultPersonFirstName { get; }
         string DefaultPersonMiddleName { get; }
         string DefaultPersonLastName { get; }
+
+        //Organization Default Values
+        string DefaultOrganizationTypeCV { get; }
+        string DefaultOrganizationName { get; }
+        string DefaultOrganizationCode { get; }
 
         // Organization Default Values
         string OrganizationTypeCVSampleCollection { get; }
@@ -28,6 +34,7 @@ namespace Hatfield.EnviroData.WQDataProfile
         string OrganizationTypeCVChemistry { get; }
 
         // Processing Level Default Values
+        string DefaultProcessingLevels { get; }
         string DefaultProcessingLevelCode { get; }
 
         // Result Default Values
@@ -74,6 +81,12 @@ namespace Hatfield.EnviroData.WQDataProfile
 
         // Dataset Default Values
         string DefaultDatasetTypeCV { get; }
+
+        //Spatial Reference Default Values
+        string DefaultSRSCode { get;  }
+        string DefaultSRSName { get;  }
+        string DefaultSRSDescription { get; }
+        string DefaultSRSLink { get;  }
 
         WayToHandleNewData WayToHandleNewData { get; }
 

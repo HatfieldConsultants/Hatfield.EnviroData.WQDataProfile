@@ -20,7 +20,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON.Test
             string startupPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
             var appDataFolder = Path.Combine(startupPath, "App_Data", "DefaultValues.json");
-            var provider = new JSONWQDefaultValueProvider(appDataFolder, true);
+            var provider = new JSONWQDefaultValueProvider(appDataFolder, true, WayToLoadConfigFile.ThrowExceptionIfLoadFail);
 
             Assert.AreEqual("JSON Default Value Provider", provider.Name);
             Assert.AreEqual(provider.DefaultPersonFirstName, null);

@@ -10,11 +10,13 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         private WQDefaultValueModel _data;
         private string _jsonFilePath;
         private bool _createNewConfigFileIsNotExist;
+        private WayToLoadConfigFile _wayToLoadConfigFile;
 
-        public JSONWQDefaultValueProvider(string jsonFilePath, bool createNewConfigFileIfNotExist)
+        public JSONWQDefaultValueProvider(string jsonFilePath, bool createNewConfigFileIfNotExist, WayToLoadConfigFile wayToLoadConfigFile)
         {
             _jsonFilePath = jsonFilePath;
             _createNewConfigFileIsNotExist = createNewConfigFileIfNotExist;
+            _wayToLoadConfigFile = wayToLoadConfigFile;
             Init();
         }
 
@@ -27,10 +29,39 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string ActionTypeCVChemistry { get { return _data.ActionTypeCVChemistry; } }
         public string ActionRelationshipTypeCVChemistry { get { return _data.ActionRelationshipTypeCVChemistry; } }
 
+        public string ActionRelationshipTypeSubVersion
+        {
+            get { return _data.ActionRelationshipTypeSubVersion; }
+        }
+
         // Person Default Values
         public string DefaultPersonFirstName { get { return _data.DefaultPersonFirstName; } }
         public string DefaultPersonMiddleName { get { return _data.DefaultPersonMiddleName; } }
         public string DefaultPersonLastName { get { return _data.DefaultPersonLastName; } }
+
+        public string DefaultOrganizationTypeCV
+        {
+            get
+            {
+                return _data.DefaultOrganizationTypeCV;
+            }
+        }
+
+        public string DefaultOrganizationName
+        {
+            get
+            {
+                return _data.DefaultOrganizationName;
+            }
+        }
+
+        public string DefaultOrganizationCode
+        {
+            get
+            {
+                return _data.DefaultOrganizationCode;
+            }
+        }
 
         // Organization Default Values
         public string OrganizationTypeCVSampleCollection { get { return _data.OrganizationTypeCVSampleCollection; } }
@@ -39,6 +70,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string OrganizationTypeCVChemistry { get { return _data.OrganizationTypeCVChemistry; } }
 
         // Processing Level Default Values
+        public string DefaultProcessingLevels { get { return _data.DefaultProcessingLevelCode; } }
         public string DefaultProcessingLevelCode { get { return _data.DefaultProcessingLevelCode; } }
 
         // Result Default Values
@@ -128,17 +160,8 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             {
                 try
                 {
-                    using (FileStream fs = File.Open(_jsonFilePath, FileMode.Open))
-                    {
-                        using (StreamReader reader = new StreamReader(fs, System.Text.Encoding.UTF8))
-                        {
-                            using (JsonReader jr = new JsonTextReader(reader))
-                            {
-                                JsonSerializer serializer = new JsonSerializer();
-                                _data = serializer.Deserialize<WQDefaultValueModel>(jr);
-                            }
-                        }
-                    }
+                    _data = LoadDefaultValueModelFromConfigFile(_jsonFilePath);
+                    
                 }
                 catch (Exception ex)
                 {
@@ -164,5 +187,49 @@ namespace Hatfield.WQDefaultValueProvider.JSON
 
             }
         }
+
+        private WQDefaultValueModel LoadDefaultValueModelFromConfigFile(string jsonFilePath)
+        {
+            using (FileStream fs = File.Open(jsonFilePath, FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(fs, System.Text.Encoding.UTF8))
+                {
+                    using (JsonReader jr = new JsonTextReader(reader))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+
+                        try
+                        {
+                            return serializer.Deserialize<WQDefaultValueModel>(jr);
+                        }
+                        catch(Exception ex)
+                        {
+                            if(_wayToLoadConfigFile == WayToLoadConfigFile.ThrowExceptionIfLoadFail)
+                            {
+                                throw ex;
+                            }
+                            else if (_wayToLoadConfigFile == WayToLoadConfigFile.CreateNewConfigFileIfLoadFail)
+                            {
+                                var noDataModel = new WQDefaultValueModel();
+                                var saveSuccess = this.SaveDefaultValueConfiguration(noDataModel);
+                                if (!saveSuccess)
+                                {
+                                    throw new InvalidDataException("Save JSON provider data fail, please contact the EIS group");
+                                }
+                                return noDataModel;
+                            }
+                            else
+                            {
+                                throw new ArgumentException(_wayToLoadConfigFile.ToString() + " is not a valid way to load config file.");
+                            }
+                        }                        
+                    }
+                }
+            }
+        
+        }
+
+
+        
     }
 }

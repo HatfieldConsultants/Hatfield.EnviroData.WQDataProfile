@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Hatfield.EnviroData.WQDataProfile")]
+[assembly: AssemblyTitle("Hatfield.EnviroData.WQDataProfile.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Hatfield.EnviroData.WQDataProfile")]
+[assembly: AssemblyProduct("Hatfield.EnviroData.WQDataProfile.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("212b0523-828b-4bea-8450-a2983118cc23")]
+[assembly: Guid("986e04ff-b69a-4a68-94f8-feb1c96f313a")]
 
 // Version information for an assembly consists of the following four values:
 //

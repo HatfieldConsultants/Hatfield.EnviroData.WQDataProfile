@@ -15,11 +15,38 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string ActionRelationshipTypeCVSampleCollection { get { return "Is related to"; } }
         public string ActionTypeCVChemistry { get { return "Specimen analysis"; } }
         public string ActionRelationshipTypeCVChemistry { get { return "Is child of"; } }
+        public string ActionRelationshipTypeSubVersion { get { return "Is new version of"; } }
+        
 
         // Person Default Values
         public string DefaultPersonFirstName { get { return "Unknown"; } }
         public string DefaultPersonMiddleName { get { return "Unknown"; } }
         public string DefaultPersonLastName { get { return "Unknown"; } }
+
+        public string DefaultOrganizationTypeCV
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
+        public string DefaultOrganizationName
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
+        public string DefaultOrganizationCode
+        {
+            get
+            {
+                return "Unknown";
+            }
+        }
+
 
         // Organization Default Values
         public string OrganizationTypeCVSampleCollection { get { return "Company"; } }
@@ -28,6 +55,7 @@ namespace Hatfield.EnviroData.WQDataProfile
         public string OrganizationTypeCVChemistry { get { return "Laboratory"; } }
 
         // Processing Level Default Values
+        public string DefaultProcessingLevels { get { return "Unknown"; } }
         public string DefaultProcessingLevelCode { get { return "Unknown"; } }
 
         // Result Default Values
@@ -75,6 +103,12 @@ namespace Hatfield.EnviroData.WQDataProfile
         // Dataset Default Values
         public string DefaultDatasetTypeCV { get { return "Other"; } }
 
+        //Spatial Reference Default Values
+        public string DefaultSRSCode { get { return "Unknown"; } }
+        public string DefaultSRSName { get { return "Unknown"; } }
+        public string DefaultSRSDescription { get { return "Unknown"; } }
+        public string DefaultSRSLink { get { return "Unknown"; } }
+
         public WayToHandleNewData WayToHandleNewData
         {
             get 
@@ -95,5 +129,8 @@ namespace Hatfield.EnviroData.WQDataProfile
         {
             //Do nothing to initialize
         }
+
+
+        
     }
 }
