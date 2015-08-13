@@ -82,11 +82,14 @@ namespace Hatfield.WQDefaultValueProvider.JSON
 
         // Sampling Feature Default Values
         public string DefaultSamplingFeatureTypeCVSampleCollection { get { return _data.DefaultSamplingFeatureTypeCVSampleCollection; } }
+        public string DefaultSamplingFeatureNameSampleCollection { get { return _data.DefaultSamplingFeatureNameSampleCollection; } }
+        public string DefaultSamplingFeatureCodeSampleCollection { get { return _data.DefaultSamplingFeatureCodeSampleCollection; } }
+        public Guid DefaultSamplingFeatureUUIDSampleCollection { get { return _data.DefaultSamplingFeatureUUIDSampleCollection; } }
 
         public string DefaultSamplingFeatureTypeCVChemistry { get { return _data.DefaultSamplingFeatureTypeCVChemistry; } }
-
-        public Guid DefaultSamplingFeatureUUID { get { return _data.DefaultSamplingFeatureUUID; } }
-        public string DefaultSamplingFeatureCode { get { return _data.DefaultSamplingFeatureCode; } }
+        public string DefaultSamplingFeatureNameChemistry { get { return _data.DefaultSamplingFeatureNameChemistry; } }
+        public string DefaultSamplingFeatureCodeChemistry { get { return _data.DefaultSamplingFeatureCodeChemistry; } }
+        public Guid DefaultSamplingFeatureUUIDChemistry { get { return _data.DefaultSamplingFeatureUUIDChemistry; } }
 
         // Measurement Result Default Values
         public string DefaultMethodTypeCVSampleCollection { get { return _data.DefaultMethodTypeCVSampleCollection; } }
@@ -121,10 +124,6 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string DefaultSRSName { get { return _data.DefaultSRSName; } }
         public string DefaultSRSDescription { get { return _data.DefaultSRSDescription; } }
         public string DefaultSRSLink { get { return _data.DefaultSRSLink; } }
-        public string DefaultSamplingFeatureName
-        {
-            get { return _data.DefaultSamplingFeatureName; }
-        }
 
         public WayToHandleNewData WayToHandleNewData { get { return _data.WayToHandleNewData; } }
 
@@ -165,7 +164,7 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                 try
                 {
                     _data = LoadDefaultValueModelFromConfigFile(_jsonFilePath);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -206,9 +205,9 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                         {
                             return serializer.Deserialize<WQDefaultValueModel>(jr);
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
-                            if(_wayToLoadConfigFile == WayToLoadConfigFile.ThrowExceptionIfLoadFail)
+                            if (_wayToLoadConfigFile == WayToLoadConfigFile.ThrowExceptionIfLoadFail)
                             {
                                 throw ex;
                             }
@@ -226,17 +225,17 @@ namespace Hatfield.WQDefaultValueProvider.JSON
                             {
                                 throw new ArgumentException(_wayToLoadConfigFile.ToString() + " is not a valid way to load config file.");
                             }
-                        }                        
+                        }
                     }
                 }
             }
-        
+
         }
 
 
 
 
 
-        
+
     }
 }
