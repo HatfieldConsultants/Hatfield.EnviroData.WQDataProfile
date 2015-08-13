@@ -67,13 +67,14 @@ namespace Hatfield.EnviroData.WQDataProfile
 
         // Sampling Feature Default Values
         public string DefaultSamplingFeatureTypeCVSampleCollection { get { return "Specimen"; } }
+        public string DefaultSamplingFeatureNameSampleCollection { get { return "Unknown"; } }
+        public string DefaultSamplingFeatureCodeSampleCollection { get { return "Unknown"; } }
+        public Guid DefaultSamplingFeatureUUIDSampleCollection { get { return System.Guid.Empty; ; } }
 
         public string DefaultSamplingFeatureTypeCVChemistry { get { return "Site"; } }
-
-        public Guid DefaultSamplingFeatureUUID { get { return System.Guid.Empty; } }
-        public string DefaultSamplingFeatureCode { get { return "Unknown"; } }
-
-        public string DefaultSamplingFeatureName { get { return "Unknown"; } }
+        public string DefaultSamplingFeatureNameChemistry { get { return "Unknown"; } }
+        public string DefaultSamplingFeatureCodeChemistry { get { return "Unknown"; } }
+        public Guid DefaultSamplingFeatureUUIDChemistry { get { return System.Guid.Empty; ; } }
 
         // Measurement Result Default Values
         public string MeasurementResultCensorCodeCVChemistry { get { return "Not censored"; } }
