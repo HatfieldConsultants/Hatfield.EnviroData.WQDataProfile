@@ -65,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj">
+    <ProjectReference Include="..\..\Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj">
       <Project>{5413d97c-1da9-48b7-b1e8-547b4daa463b}</Project>
       <Name>Hatfield.EnviroData.WQDataProfile</Name>
     </ProjectReference>

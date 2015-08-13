@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.WQDefaultValueProvider.JSON.Test", "Test\Hatfield.WQDefaultValueProvider.JSON.Test\Hatfield.WQDefaultValueProvider.JSON.Test.csproj", "{D4C496ED-D1CB-44EE-96F7-B3164A3C65C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.WQDataProfile.Test", "Hatfield.EnviroData.WQDataProfile.Test\Hatfield.EnviroData.WQDataProfile.Test.csproj", "{E8FAF2B4-0226-4AA0-BB90-34C5AAC5984F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.WQDataProfile.Test", "Test\Hatfield.EnviroData.WQDataProfile.Test\Hatfield.EnviroData.WQDataProfile.Test.csproj", "{E8FAF2B4-0226-4AA0-BB90-34C5AAC5984F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

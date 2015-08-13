@@ -121,6 +121,10 @@ namespace Hatfield.WQDefaultValueProvider.JSON
         public string DefaultSRSName { get { return _data.DefaultSRSName; } }
         public string DefaultSRSDescription { get { return _data.DefaultSRSDescription; } }
         public string DefaultSRSLink { get { return _data.DefaultSRSLink; } }
+        public string DefaultSamplingFeatureName
+        {
+            get { return _data.DefaultSamplingFeatureName; }
+        }
 
         public WayToHandleNewData WayToHandleNewData { get { return _data.WayToHandleNewData; } }
 
@@ -228,6 +232,9 @@ namespace Hatfield.WQDefaultValueProvider.JSON
             }
         
         }
+
+
+
 
 
         

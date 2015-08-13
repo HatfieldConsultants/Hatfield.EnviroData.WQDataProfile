@@ -48,6 +48,7 @@ namespace Hatfield.EnviroData.WQDataProfile
 
         public Guid DefaultSamplingFeatureUUID { get; set; }
         public string DefaultSamplingFeatureCode { get; set; }
+        public string DefaultSamplingFeatureName { get; set; }
 
         public string SamplingFeatureName { get; set; }
 
