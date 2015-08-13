@@ -73,6 +73,8 @@ namespace Hatfield.EnviroData.WQDataProfile
         public Guid DefaultSamplingFeatureUUID { get { return System.Guid.Empty; } }
         public string DefaultSamplingFeatureCode { get { return "Unknown"; } }
 
+        public string DefaultSamplingFeatureName { get { return "Unknown"; } }
+
         // Measurement Result Default Values
         public string MeasurementResultCensorCodeCVChemistry { get { return "Not censored"; } }
         public string MeasurementResultQualityCodeCVChemistry { get { return "Unknown"; } }
