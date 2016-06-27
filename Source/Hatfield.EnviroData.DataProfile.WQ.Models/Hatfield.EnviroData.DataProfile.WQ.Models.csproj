@@ -41,10 +41,12 @@
   <ItemGroup>
     <Compile Include="Analyte.cs" />
     <Compile Include="AnalyteCategory.cs" />
+    <Compile Include="FieldWorkProduction.cs" />
     <Compile Include="Lab.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="ProcessingLevel.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="SamplingActivity.cs" />
     <Compile Include="Site.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit.cs" />

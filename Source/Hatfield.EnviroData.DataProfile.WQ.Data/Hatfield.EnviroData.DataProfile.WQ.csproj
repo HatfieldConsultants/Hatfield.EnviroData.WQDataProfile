@@ -42,6 +42,12 @@
     <Compile Include="IWaterQualityDataProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hatfield.EnviroData.DataProfile.WQ.Models\Hatfield.EnviroData.DataProfile.WQ.Models.csproj">
+      <Project>{3251f51a-a4d9-47c6-9b50-a0a996c9ba40}</Project>
+      <Name>Hatfield.EnviroData.DataProfile.WQ.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
