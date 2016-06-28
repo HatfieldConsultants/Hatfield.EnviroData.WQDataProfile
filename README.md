@@ -4,7 +4,7 @@ The Water Quality data profile sits on top of the ODM2 database and provides a s
 
 ![ERD Relationship](/docs/images/ERD_1.png)
 
-A brief description of each entity has been provided in the subsequent paragraphs:
+A brief description of each entity is provided below:
 
 **Projects:**
 Contains project details such as project name.
