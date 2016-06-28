@@ -27,5 +27,18 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             Assert.Throws<NotImplementedException>(() => dataProfile.GetAllSites());
         }
+
+        [Test]
+        public void TestAnalyteQuery()
+        {
+            var siteDb = new InMemoryDatabaseGenerator().CreateTestDbContext();
+
+            var dataProfile = new WaterQualityDataProfile(siteDb);
+
+            var actualAnalytes = dataProfile.GetAllAnalytes();
+
+            Assert.NotNull(actualAnalytes);
+            Assert.AreEqual(3, actualAnalytes);
+        }
     }
 }

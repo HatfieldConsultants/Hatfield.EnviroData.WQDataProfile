@@ -44,6 +44,27 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
         
         }
 
+        private DbSet<Variable> CreateMockVariableDb()
+        {
+            var data = new List<Variable> { 
+                new Variable{
+                    VariableCode = "pH"
+                },
+                new Variable{
+                    VariableCode = "Aluminum (Al)-Dissolved"
+                },
+                new Variable{
+                    VariableCode = "Zinc (Zn)-Dissolved"
+                }
+            };
+
+            var mockSiteDbSet = ToDbSet<Variable>(data);
+
+            //add more custom query mock here
+
+            return mockSiteDbSet.Object;
+        }
+
 
 
         public DbContext CreateTestDbContext()
@@ -51,6 +72,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             var mockDbContext = new Mock<DbContext>();
 
             mockDbContext.Setup(x => x.Set<Site>()).Returns(CreateMockSiteDb());
+            mockDbContext.Setup(x => x.Set<Variable>()).Returns(CreateMockVariableDb());
             return mockDbContext.Object;
         }
     }
