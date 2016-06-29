@@ -24,7 +24,16 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Site> GetAllSites()
         {
-            throw new NotImplementedException();
+            var siteModels = from site in _dbContext.Set<Core.Site>()
+                             select new Site
+                             {
+                                 Id = site.SamplingFeatureID,
+                                 Name = site.SamplingFeature.SamplingFeatureName,
+                                 Latitude = site.Latitude,
+                                 Longitude = site.Longitude
+                             };
+
+            return siteModels;
         }
 
         /// <summary>

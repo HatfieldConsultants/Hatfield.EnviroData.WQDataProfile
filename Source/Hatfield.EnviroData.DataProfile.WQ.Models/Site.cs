@@ -8,11 +8,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
     public class Site
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public float? Latitude { get; set; }
-        public float? Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }

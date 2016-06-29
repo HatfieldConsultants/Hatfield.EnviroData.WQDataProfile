@@ -36,7 +36,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
         {            
             var sites = _wqDataProfile.GetAllSites();
             Assert.NotNull(sites);
-            Assert.AreEqual(3, sites.Count());
+            Assert.AreEqual(4, sites.Count());
         }
     }
 }
