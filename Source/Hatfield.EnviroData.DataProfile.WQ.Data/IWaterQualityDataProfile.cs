@@ -8,7 +8,7 @@ using Hatfield.EnviroData.DataProfile.WQ.Models;
 
 namespace Hatfield.EnviroData.DataProfile.WQ
 {
-    public interface IWaterQualityDataProfile
+    public interface IWaterQualityDataProfile : IDisposable
     {
         /// <summary>
         /// Get all the sites in the databases

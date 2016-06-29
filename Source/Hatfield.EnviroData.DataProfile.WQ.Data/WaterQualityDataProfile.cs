@@ -10,7 +10,7 @@ using Hatfield.EnviroData.DataProfile.WQ.Models;
 
 namespace Hatfield.EnviroData.DataProfile.WQ
 {
-    public class WaterQualityDataProfile : IWaterQualityDataProfile
+    public class WaterQualityDataProfile : IWaterQualityDataProfile, IDisposable
     {
         private DbContext _dbContext;
         public WaterQualityDataProfile(DbContext dbContext)
@@ -168,6 +168,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         public bool SaveOrUpdateWaterQualitySamples(IEnumerable<WaterQualitySample> samples)
         {
             throw new NotImplementedException();
+        }
+
+        
+    
+        public void Dispose()
+        {
+            _dbContext.Dispose();
         }
     }
 }
