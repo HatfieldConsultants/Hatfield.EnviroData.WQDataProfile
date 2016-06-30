@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainBuilder.cs" />
+    <Compile Include="DomainBuildResult.cs" />
     <Compile Include="IWaterQualityDataProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaterQualityDataProfile.cs" />

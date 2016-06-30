@@ -43,7 +43,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public Site SaveOrUpdateSite(Site site) 
         {
-            throw new NotImplementedException();
+            var domainBuildResult = DomainBuilder.Build(site, _dbContext);
+            _dbContext.Entry(domainBuildResult.Data).State = domainBuildResult.State;
+            _dbContext.SaveChanges();
+
+            site.Id = domainBuildResult.Data.SamplingFeatureID;
+
+            return site;
         }
 
         /// <summary>
