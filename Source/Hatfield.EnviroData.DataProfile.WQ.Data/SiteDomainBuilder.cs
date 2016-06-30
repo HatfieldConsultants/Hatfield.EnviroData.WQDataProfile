@@ -5,21 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
+using Hatfield.EnviroData.DataProfile.WQ.Models;
+
 namespace Hatfield.EnviroData.DataProfile.WQ
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public static class DomainBuilder
+    public class SiteDomainBuilder : IDomainBuilder
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="dbContext"></param>
-        /// <returns></returns>
-        public static DomainBuildResult<Hatfield.EnviroData.Core.Site> Build(Hatfield.EnviroData.DataProfile.WQ.Models.Site data, DbContext dbContext)
+        public DomainBuildResult Build(Models.WQProfileEntity entity, System.Data.Entity.DbContext dbContext)
         {
+            var data = (Hatfield.EnviroData.DataProfile.WQ.Models.Site)entity;
             Hatfield.EnviroData.Core.Site domain = null;
             System.Data.Entity.EntityState state = EntityState.Unchanged;
 
@@ -41,7 +35,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
             domain.Latitude = data.Latitude.HasValue ? data.Latitude.Value : domain.Latitude;
             domain.Longitude = data.Longitude.HasValue ? data.Longitude.Value : domain.Longitude;
             domain.SamplingFeature.SamplingFeatureName = data.Name;
-            var result = new DomainBuildResult<Hatfield.EnviroData.Core.Site>(domain, state);
+            var result = new DomainBuildResult(true, domain, state);
             return result;
         }
     }

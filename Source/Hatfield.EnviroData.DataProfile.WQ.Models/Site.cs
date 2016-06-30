@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
-    public class Site
+    public class Site : WQProfileEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
