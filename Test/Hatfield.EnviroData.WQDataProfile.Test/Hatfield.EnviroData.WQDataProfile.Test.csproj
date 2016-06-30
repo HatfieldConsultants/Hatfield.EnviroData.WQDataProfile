@@ -11,7 +11,7 @@
     <AssemblyName>Hatfield.EnviroData.WQDataProfile.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,19 +33,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.Core">
-      <HintPath>..\packages\Hatfield.EnviroData.Core.1.0.0.3\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Hatfield.EnviroData.Core.1.0.0.3\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -65,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj">
+    <ProjectReference Include="$(SolutionDir)\Source\Hatfield.EnviroData.WQDataProfile\Hatfield.EnviroData.WQDataProfile.csproj">
       <Project>{5413d97c-1da9-48b7-b1e8-547b4daa463b}</Project>
       <Name>Hatfield.EnviroData.WQDataProfile</Name>
     </ProjectReference>
