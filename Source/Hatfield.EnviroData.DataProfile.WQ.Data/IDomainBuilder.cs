@@ -12,5 +12,6 @@ namespace Hatfield.EnviroData.DataProfile.WQ
     public interface IDomainBuilder
     {
         DomainBuildResult Build(WQProfileEntity entity, DbContext dbContext);
+        bool IsDataDirty(Hatfield.EnviroData.DataProfile.WQ.Models.WQProfileEntity entity, object domain);
     }
 }
