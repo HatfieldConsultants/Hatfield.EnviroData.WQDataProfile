@@ -44,11 +44,12 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public Site SaveOrUpdateSite(Site site) 
         {
-            var domainBuildResult = DomainBuilder.Build(site, _dbContext);
+            var domainBuildResult = DomainBuilderFactory.Create(site.GetType()).Build(site, _dbContext);
             _dbContext.Entry(domainBuildResult.Data).State = domainBuildResult.State;
             _dbContext.SaveChanges();
 
-            site.Id = domainBuildResult.Data.SamplingFeatureID;
+            var castedDomain = (Hatfield.EnviroData.Core.Site)domainBuildResult.Data;
+            site.Id = castedDomain.SamplingFeatureID;
 
             return site;
         }

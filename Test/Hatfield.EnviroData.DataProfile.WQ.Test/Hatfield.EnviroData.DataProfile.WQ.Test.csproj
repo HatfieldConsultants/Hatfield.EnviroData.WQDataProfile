@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\SiteDomainBuilderTest.cs" />
     <Compile Include="InMemoryDatabaseGenerator.cs" />
     <Compile Include="WaterQualityProfileIntegrationTest.cs" />
     <Compile Include="WaterQualityProfileTest.cs" />
