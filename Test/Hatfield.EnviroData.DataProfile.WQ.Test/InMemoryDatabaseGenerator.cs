@@ -67,12 +67,12 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
 
 
-        public DbContext CreateTestDbContext()
+        public ODM2Entities CreateTestDbContext()
         {
-            var mockDbContext = new Mock<DbContext>();
+            var mockDbContext = new Mock<ODM2Entities>();
 
-            mockDbContext.Setup(x => x.Set<Site>()).Returns(CreateMockSiteDb());
-            mockDbContext.Setup(x => x.Set<Variable>()).Returns(CreateMockVariableDb());
+            mockDbContext.Setup(x => x.Sites).Returns(CreateMockSiteDb());
+            //mockDbContext.Setup(x => x.Variables).Returns(CreateMockVariableDb());
             return mockDbContext.Object;
         }
     }

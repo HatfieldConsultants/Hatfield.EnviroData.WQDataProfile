@@ -12,8 +12,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
 {
     public class WaterQualityDataProfile : IWaterQualityDataProfile, IDisposable
     {
-        private DbContext _dbContext;
-        public WaterQualityDataProfile(DbContext dbContext)
+        private Hatfield.EnviroData.Core.ODM2Entities _dbContext;
+        public WaterQualityDataProfile(Hatfield.EnviroData.Core.ODM2Entities dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,7 +24,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Site> GetAllSites()
         {
-            var siteModels = from site in _dbContext.Set<Core.Site>()
+            var siteModels = from site in _dbContext.Sites
                              select new Site
                              {
                                  Id = site.SamplingFeatureID,

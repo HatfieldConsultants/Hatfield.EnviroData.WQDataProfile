@@ -56,7 +56,7 @@
     <Compile Include="IDomainBuilder.cs" />
     <Compile Include="IWaterQualityDataProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteDomainBuilder.cs" />
+    <Compile Include="Builders\SiteDomainBuilder.cs" />
     <Compile Include="WaterQualityDataProfile.cs" />
   </ItemGroup>
   <ItemGroup>

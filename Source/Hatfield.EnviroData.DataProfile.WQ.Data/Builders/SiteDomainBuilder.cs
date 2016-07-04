@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 using Hatfield.EnviroData.DataProfile.WQ.Models;
 
-namespace Hatfield.EnviroData.DataProfile.WQ
+namespace Hatfield.EnviroData.DataProfile.WQ.Builders
 {
     public class SiteDomainBuilder : IDomainBuilder
     {

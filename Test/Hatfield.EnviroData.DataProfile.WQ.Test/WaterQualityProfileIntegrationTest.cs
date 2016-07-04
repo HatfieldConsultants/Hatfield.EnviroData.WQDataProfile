@@ -15,7 +15,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
     [TestFixture]
     public class WaterQualityProfileIntegrationTest
     {
-        private DbContext _dbContext;
+        private ODM2Entities _dbContext;
         private IWaterQualityDataProfile _wqDataProfile;
 
         [OneTimeSetUp]

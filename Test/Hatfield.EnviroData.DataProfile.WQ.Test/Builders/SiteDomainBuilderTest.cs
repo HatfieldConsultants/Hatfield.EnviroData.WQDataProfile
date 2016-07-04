@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 using Hatfield.EnviroData.DataProfile.WQ.Models;
 using Hatfield.EnviroData.Core;
+using Hatfield.EnviroData.DataProfile.WQ.Builders;
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Test.Builders
 {
