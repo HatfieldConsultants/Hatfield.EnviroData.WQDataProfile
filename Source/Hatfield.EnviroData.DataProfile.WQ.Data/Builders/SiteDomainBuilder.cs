@@ -11,7 +11,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Builders
 {
     public class SiteDomainBuilder : IDomainBuilder
     {
-        public DomainBuildResult Build(Hatfield.EnviroData.DataProfile.WQ.Models.WQProfileEntity entity, System.Data.Entity.DbContext dbContext)
+        public DomainBuildResult Build(Hatfield.EnviroData.DataProfile.WQ.Models.WQProfileEntity entity, Hatfield.EnviroData.Core.ODM2Entities dbContext)
         {
             var data = (Hatfield.EnviroData.DataProfile.WQ.Models.Site)entity;
             Hatfield.EnviroData.Core.Site domain = null;
@@ -24,7 +24,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Builders
 
             if (data.Id > 0)
             {
-                domain = dbContext.Set<Core.Site>().Where(x => x.SamplingFeatureID == data.Id).FirstOrDefault();
+                domain = dbContext.Sites.Where(x => x.SamplingFeatureID == data.Id).FirstOrDefault();
             }
 
             //data has not change, return the data in the database

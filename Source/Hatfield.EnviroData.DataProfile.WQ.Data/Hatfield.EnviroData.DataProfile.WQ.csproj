@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\WaterQualityObservationBuilder.cs" />
     <Compile Include="DomainBuilderFactory.cs" />
     <Compile Include="DomainBuildResult.cs" />
     <Compile Include="IDomainBuilder.cs" />
     <Compile Include="IWaterQualityDataProfile.cs" />
+    <Compile Include="ProcessingLevelHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\SiteDomainBuilder.cs" />
     <Compile Include="WaterQualityDataProfile.cs" />

@@ -120,7 +120,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
         {
             throw new NotImplementedException();
         }
@@ -132,7 +132,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
         {
             throw new NotImplementedException();
         }
@@ -144,7 +144,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
         {
             throw new NotImplementedException();
         }
@@ -157,7 +157,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
         {
             throw new NotImplementedException();
         }
@@ -170,7 +170,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
                                                                 IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
         {
             throw new NotImplementedException();
@@ -181,7 +181,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
-        public bool SaveOrUpdateWaterQualitySamples(IEnumerable<WaterQualitySample> samples)
+        public bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples)
         {
             throw new NotImplementedException();
         }
