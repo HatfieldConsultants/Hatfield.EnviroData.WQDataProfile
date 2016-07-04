@@ -25,6 +25,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         public IQueryable<Site> GetAllSites()
         {
             var siteModels = from site in _dbContext.Set<Core.Site>()
+                             where site.SamplingFeature.SamplingFeatureTypeCV == "Site"
                              select new Site
                              {
                                  Id = site.SamplingFeatureID,
@@ -58,7 +59,15 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Analyte> GetAllAnalytes()
         {
-            throw new NotImplementedException();
+            var analyteModels = from analyte in _dbContext.Set<Core.SamplingFeature>()
+                                where analyte.SamplingFeatureTypeCV == "Specimen"
+                                select new Analyte
+                                {
+                                 Id = analyte.SamplingFeatureID,        //cannot override as it is protected
+                                 Name = analyte.SamplingFeatureName,
+                                };
+
+            return analyteModels;
         }
 
         /// <summary>
@@ -67,7 +76,15 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<SamplingActivity> GetAllSamplingActivities() 
         {
-            throw new NotImplementedException();
+            var samplingActivityModels = from samplingActivity in _dbContext.Set<Core.Action>()
+                                select new SamplingActivity
+                                {
+                                    Id = samplingActivity.ActionID,        //cannot override as it is protected
+                                    StartDateTime = samplingActivity.BeginDateTime,
+                                    EndDateTime = samplingActivity.EndDateTime
+                                };
+
+            return samplingActivityModels;
         }
 
         /// <summary>

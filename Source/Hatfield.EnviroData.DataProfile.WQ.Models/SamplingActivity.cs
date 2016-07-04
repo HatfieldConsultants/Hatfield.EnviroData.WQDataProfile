@@ -8,7 +8,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
     public class SamplingActivity
     {
-        public long Id { get; protected set; }
+        public long Id { get; set; }
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public long StartDateTimeUTCOffset { get; set; }
