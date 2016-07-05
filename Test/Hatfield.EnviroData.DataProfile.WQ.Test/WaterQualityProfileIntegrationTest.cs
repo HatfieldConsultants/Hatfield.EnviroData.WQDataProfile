@@ -15,7 +15,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
     [TestFixture]
     public class WaterQualityProfileIntegrationTest
     {
-        private ODM2Entities _dbContext;
+        private DbContext _dbContext;
         private IWaterQualityDataProfile _wqDataProfile;
 
         [OneTimeSetUp]
@@ -35,7 +35,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
         public void SiteQueryTest()
         {
             var sites = _wqDataProfile.GetAllSites();
-            var arraySites = sites.ToArray();
+            var arraySites = sites.ToArray();   //lazy loading 
 
             double[] Longitudes = { 123.1207, 123.1207, 111.1111, 123.1207 };
 
@@ -51,5 +51,30 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.NotNull(sites);
             Assert.AreEqual(4, sites.Count());
         }
+
+          [Test]
+        public void AnalyteQueryTest()
+        {
+            var analytes = _wqDataProfile.GetAllAnalytes();
+            var arrayAnalytes = analytes.ToArray();
+
+
+
+
+            Assert.NotNull(analytes);
+            Assert.AreEqual(4, analytes.Count());
+
+
+
+        }
+
+        [Test]
+        public void SamplingActivityQueryTest()
+          {
+              var samplingActivities = _wqDataProfile.GetAllSamplingActivities();
+              var arraySamplingActivities = samplingActivities.ToArray();
+
+              Assert.NotNull(samplingActivities);
+          }
     }
 }
