@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataProfile.WQ.Models;
 
 namespace Hatfield.EnviroData.DataProfile.WQ
 {
     public interface IDomainBuilder
     {
-        DomainBuildResult Build(WQProfileEntity entity, DbContext dbContext);
-        bool IsDataDirty(Hatfield.EnviroData.DataProfile.WQ.Models.WQProfileEntity entity, object domain);
+        DomainBuildResult Build(WQProfileEntity entity, ODM2Entities dbContext);
+        bool IsDataDirty(WQProfileEntity entity, object domain);
     }
 }

@@ -72,7 +72,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
-        IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime);
+        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime);
 
         /// <summary>
         /// Query water quality data
@@ -81,7 +81,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
-        IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site);
+        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site);
 
         /// <summary>
         /// Query water quality data
@@ -90,7 +90,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte);
+        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte);
 
         /// <summary>
         /// Query water quality data
@@ -100,7 +100,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte);
+        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte);
 
         /// <summary>
         /// Query water quality data
@@ -110,7 +110,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
-        IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, 
+        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, 
                                                                 IEnumerable<Site> sites, IEnumerable<Analyte> analytes);
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
-        bool SaveOrUpdateWaterQualitySamples(IEnumerable<WaterQualitySample> samples);
+        bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples);
 
         
     }

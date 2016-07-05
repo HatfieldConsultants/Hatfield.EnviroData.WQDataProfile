@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataProfile.WQ.Models;
+using Moq;
 
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Test
@@ -23,9 +24,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             var dataProfile = new WaterQualityDataProfile(siteDb);
 
-            //var actualSites = dataProfile.GetAllSites();
+            var actualSites = dataProfile.GetAllSites();
 
-            Assert.Throws<NotImplementedException>(() => dataProfile.GetAllSites());
+            Assert.NotNull(actualSites);
+            Assert.AreEqual(3, actualSites.Count());
+            //Assert.Throws<NotImplementedException>(() => dataProfile.GetAllSites());
         }
 
         [Test]
@@ -35,10 +38,12 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             var dataProfile = new WaterQualityDataProfile(siteDb);
 
-            var actualAnalytes = dataProfile.GetAllAnalytes();
+            Assert.Throws<NotImplementedException>(() => dataProfile.GetAllAnalytes());
+            //var actualAnalytes = dataProfile.GetAllAnalytes();
 
-            Assert.NotNull(actualAnalytes);
-            Assert.AreEqual(3, actualAnalytes);
+            //Assert.NotNull(actualAnalytes);
+            //Assert.AreEqual(3, actualAnalytes);
         }
+
     }
 }

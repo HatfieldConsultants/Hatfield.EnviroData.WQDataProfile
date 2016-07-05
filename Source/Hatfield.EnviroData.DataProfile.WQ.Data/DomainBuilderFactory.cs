@@ -1,9 +1,11 @@
-﻿using Hatfield.EnviroData.DataProfile.WQ.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Hatfield.EnviroData.DataProfile.WQ.Builders;
+using Hatfield.EnviroData.DataProfile.WQ.Models;
 
 namespace Hatfield.EnviroData.DataProfile.WQ
 {

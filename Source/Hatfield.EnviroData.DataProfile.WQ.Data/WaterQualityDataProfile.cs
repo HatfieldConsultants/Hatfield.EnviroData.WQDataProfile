@@ -64,7 +64,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                 where analyte.SamplingFeatureTypeCV == "Specimen"
                                 select new Analyte
                                 {
-                                 Id = analyte.SamplingFeatureID,        //cannot override as it is protected
+                                 Id = analyte.SamplingFeatureID,        //overridden protected
                                  Name = analyte.SamplingFeatureName,
                                 };
 
