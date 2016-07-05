@@ -82,8 +82,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                 {
                                     Id = samplingActivity.ActionID,        //cannot override as it is protected
                                     StartDateTime = samplingActivity.BeginDateTime,
-                                    EndDateTime = samplingActivity.EndDateTime
-                                };
+                                    EndDateTime = samplingActivity.EndDateTime,
+                               };
 
             return samplingActivityModels;
         }

@@ -59,6 +59,9 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             var arrayAnalytes = analytes.ToArray();
 
             Assert.NotNull(analytes);
+            Assert.AreEqual(4, analytes.Count());
+
+
 
         }
 
