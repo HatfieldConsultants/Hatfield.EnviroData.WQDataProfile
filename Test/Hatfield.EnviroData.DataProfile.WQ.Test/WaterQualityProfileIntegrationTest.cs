@@ -15,7 +15,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
     [TestFixture]
     public class WaterQualityProfileIntegrationTest
     {
+<<<<<<< HEAD
         private ODM2Entities _dbContext;
+=======
+        private DbContext _dbContext;
+>>>>>>> upstream/master
         private IWaterQualityDataProfile _wqDataProfile;
 
         [OneTimeSetUp]
@@ -52,22 +56,32 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(4, sites.Count());
         }
 
+<<<<<<< HEAD
         [Test]
+=======
+          [Test]
+>>>>>>> upstream/master
         public void AnalyteQueryTest()
         {
             var analytes = _wqDataProfile.GetAllAnalytes();
             var arrayAnalytes = analytes.ToArray();
 
+<<<<<<< HEAD
             string[] Names = { "Analyte1", "Analyte2", "Analyte3", "Analyte4" };
 
                 for( var i=0; i< arrayAnalytes.Length; i++)
                 {
                     Assert.AreEqual(Names[i], arrayAnalytes[i].Name);
                 }
+=======
+
+
+>>>>>>> upstream/master
 
             Assert.NotNull(analytes);
             Assert.AreEqual(4, analytes.Count());
 
+<<<<<<< HEAD
         }
 
         [Test]
@@ -156,10 +170,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
     
 
               
+=======
+
+>>>>>>> upstream/master
 
         }
 
         [Test]
+<<<<<<< HEAD
         public void QuerySamplingActivities2Test()
         {
             DateTime beginDate1 = new DateTime(2016, 6, 18, 10, 34, 9);
@@ -206,5 +224,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(1, samplingActivities.Count()); //test for the number of values returned after the query
 
         }
+=======
+        public void SamplingActivityQueryTest()
+          {
+              var samplingActivities = _wqDataProfile.GetAllSamplingActivities();
+              var arraySamplingActivities = samplingActivities.ToArray();
+
+              Assert.NotNull(samplingActivities);
+          }
+>>>>>>> upstream/master
     }
 }

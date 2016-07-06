@@ -12,8 +12,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
 {
     public class WaterQualityDataProfile : IWaterQualityDataProfile, IDisposable
     {
+<<<<<<< HEAD
         private Hatfield.EnviroData.Core.ODM2Entities _dbContext;
         public WaterQualityDataProfile(Hatfield.EnviroData.Core.ODM2Entities dbContext)
+=======
+        private DbContext _dbContext;
+        public WaterQualityDataProfile(DbContext dbContext)
+>>>>>>> upstream/master
         {
             _dbContext = dbContext;
         }
@@ -24,8 +29,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Site> GetAllSites()
         {
+<<<<<<< HEAD
             var siteModels = from site in _dbContext.Sites
                              where (site.SamplingFeature.SamplingFeatureTypeCV == "Site")
+=======
+            var siteModels = from site in _dbContext.Set<Core.Site>()
+                             where site.SamplingFeature.SamplingFeatureTypeCV == "Site"
+>>>>>>> upstream/master
                              select new Site
                              {
                                  Id = site.SamplingFeatureID,
@@ -60,12 +70,21 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Analyte> GetAllAnalytes()
         {
+<<<<<<< HEAD
             var analyteModels = from analyte in _dbContext.SamplingFeatures
                                 where (analyte.SamplingFeatureTypeCV == "Specimen")
                                 select new Analyte
                                 {
                                     Id = analyte.SamplingFeatureID,       
                                     Name = analyte.SamplingFeatureName,
+=======
+            var analyteModels = from analyte in _dbContext.Set<Core.SamplingFeature>()
+                                where analyte.SamplingFeatureTypeCV == "Specimen"
+                                select new Analyte
+                                {
+                                 Id = analyte.SamplingFeatureID,        //overridden protected
+                                 Name = analyte.SamplingFeatureName,
+>>>>>>> upstream/master
                                 };
 
             return analyteModels;
@@ -75,6 +94,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// Get all sampling activities in the databases
         /// </summary>
         /// <returns></returns>
+<<<<<<< HEAD
         public IQueryable<SamplingActivity> GetAllSamplingActivities()
         {
             var samplingActivityModels = from samplingActivity in _dbContext.Actions
@@ -94,6 +114,18 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                                  Longitude = x.SamplingFeature.Site.Longitude
                                              })
                                          };
+=======
+        public IQueryable<SamplingActivity> GetAllSamplingActivities() 
+        {
+            var samplingActivityModels = from samplingActivity in _dbContext.Set<Core.Action>()
+                                select new SamplingActivity
+                                {
+                                    Id = samplingActivity.ActionID,        //cannot override as it is protected
+                                    StartDateTime = samplingActivity.BeginDateTime,
+                                    EndDateTime = samplingActivity.EndDateTime,
+                               };
+
+>>>>>>> upstream/master
             return samplingActivityModels;
         }
 
@@ -115,6 +147,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime)
         {
+<<<<<<< HEAD
             var samplingActivityModels = from samplingActivity in _dbContext.Actions
                                          where samplingActivity.BeginDateTime == startDateTime && samplingActivity.EndDateTime == endDateTime
                                          select new SamplingActivity
@@ -135,6 +168,9 @@ namespace Hatfield.EnviroData.DataProfile.WQ
             return samplingActivityModels;
         
         
+=======
+            throw new NotImplementedException();
+>>>>>>> upstream/master
         }
 
         /// <summary>
@@ -146,6 +182,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, IEnumerable<Site> sites)
         {
+<<<<<<< HEAD
             int siteId = 0;
             foreach( var site in sites)
             {
@@ -173,6 +210,9 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                              })
                                          };
             return samplingActivityModels;
+=======
+            throw new NotImplementedException();
+>>>>>>> upstream/master
         }
 
         /// <summary>
@@ -191,7 +231,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
+<<<<<<< HEAD
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
+=======
+        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
+>>>>>>> upstream/master
         {
             throw new NotImplementedException();
         }
@@ -203,7 +247,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
+<<<<<<< HEAD
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
+=======
+        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
+>>>>>>> upstream/master
         {
             throw new NotImplementedException();
         }
@@ -215,7 +263,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
+<<<<<<< HEAD
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
+=======
+        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
+>>>>>>> upstream/master
         {
             throw new NotImplementedException();
         }
@@ -228,7 +280,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
+<<<<<<< HEAD
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
+=======
+        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
+>>>>>>> upstream/master
         {
             throw new NotImplementedException();
         }
@@ -241,7 +297,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
+<<<<<<< HEAD
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
+=======
+        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
+>>>>>>> upstream/master
                                                                 IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
         {
             throw new NotImplementedException();
@@ -252,10 +312,19 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
+<<<<<<< HEAD
         public bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples)
         {
             throw new NotImplementedException();
         }
+=======
+        public bool SaveOrUpdateWaterQualitySamples(IEnumerable<WaterQualitySample> samples)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+>>>>>>> upstream/master
     
         public void Dispose()
         {
