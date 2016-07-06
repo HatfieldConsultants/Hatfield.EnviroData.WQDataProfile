@@ -86,13 +86,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                              EndDateTime = samplingActivity.EndDateTime,
                                              EndDateTimeUTCOffset = (int) samplingActivity.EndDateTimeUTCOffset,
                                             
-                                             SamplingSites = (Site) samplingActivity.FeatureActions.Select(x => new Site
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
                                              {
                                                  Id = x.SamplingFeature.SamplingFeatureID,
                                                  Name = x.SamplingFeature.SamplingFeatureName,
                                                  Latitude = x.SamplingFeature.Site.Latitude,
                                                  Longitude = x.SamplingFeature.Site.Longitude
-                                             })
+                                             }).FirstOrDefault()
                                          };
             return samplingActivityModels;
         }
@@ -124,13 +124,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                              StartDateTimeUTCOffset = samplingActivity.BeginDateTimeUTCOffset,
                                              EndDateTime = samplingActivity.EndDateTime,
                                              EndDateTimeUTCOffset = (int)samplingActivity.EndDateTimeUTCOffset,
-                                             SamplingSites = (Site)samplingActivity.FeatureActions.Select(x => new Site
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
                                              {
                                                  Id = x.SamplingFeature.SamplingFeatureID,
                                                  Name = x.SamplingFeature.SamplingFeatureName,
                                                  Latitude = x.SamplingFeature.Site.Latitude,
                                                  Longitude = x.SamplingFeature.Site.Longitude
-                                             }).First()
+                                             }).FirstOrDefault()
                                          };
             return samplingActivityModels;
         
@@ -144,18 +144,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">sampling activity end date</param>
         /// <param name="sites">sampling site</param>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, IEnumerable<Site> sites)
+        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites)
         {
-            int siteId = 0;
-            foreach( var site in sites)
-            {
-                siteId = site.Id;
-            }
-
- 
 
             var samplingActivityModels = from samplingActivity in _dbContext.Actions
-                                         where (samplingActivity.BeginDateTime == startDateTime && samplingActivity.EndDateTime == endDateTime && (samplingActivity.FeatureActions.FirstOrDefault().SamplingFeatureID == siteId))         
+                                         where (samplingActivity.BeginDateTime == startDateTime && samplingActivity.EndDateTime == endDateTime && (samplingActivity.FeatureActions.FirstOrDefault().SamplingFeatureID == sites.Id))         
                                          select new SamplingActivity
                                          {
                                              Id = samplingActivity.ActionID,
@@ -164,13 +157,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                              EndDateTime = samplingActivity.EndDateTime,
                                              EndDateTimeUTCOffset = (int)samplingActivity.EndDateTimeUTCOffset,
 
-                                             SamplingSites = (Site) samplingActivity.FeatureActions.Select(x => new Site
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
                                              {
                                                  Id = x.SamplingFeature.SamplingFeatureID,
                                                  Name = x.SamplingFeature.SamplingFeatureName,
                                                  Latitude = x.SamplingFeature.Site.Latitude,
                                                  Longitude = x.SamplingFeature.Site.Longitude
-                                             })
+                                             }).FirstOrDefault()
                                          };
             return samplingActivityModels;
         }

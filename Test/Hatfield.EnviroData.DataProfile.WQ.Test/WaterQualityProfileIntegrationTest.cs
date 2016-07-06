@@ -152,11 +152,6 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             Assert.NotNull(samplingActivities);
             Assert.AreEqual(1, samplingActivities.Count()); //test for the number of values returned after the query
-
-    
-
-              
-
         }
 
         [Test]
@@ -178,29 +173,43 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
                                              {
                                                  Id = 1,
                                                  Name = "C1",
-                                                 Latitude = 123.1207,
-                                                 Longitude = 49.2827
+                                                 Latitude = 49.2827,
+                                                 Longitude = 123.1207
                                              };
 
 
            var querySite2 = new Hatfield.EnviroData.DataProfile.WQ.Models.Site
                                    {
-                                                    Id = 2,
+                                                Id = 2,
                                                 Name = "C2",
-                                       Latitude = 123.1207,
-                                       Longitude = 49.2827
+                                                Latitude = 49.2827,
+                                                Longitude = 123.1207
                                    };
-
-           List<Hatfield.EnviroData.DataProfile.WQ.Models.Site> querySite1 = new List<Models.Site>();
-
-           querySite1.Add(querySite);
+           
 
             DateTime[] arrayEndDates = { endDate1, endDate2, endDate3, endDate4 };
 
-            var samplingActivities = _wqDataProfile.QuerySamplingActivities(beginDate1, endDate1, querySite1);
+
+            //converting to array
+            var samplingActivities = _wqDataProfile.QuerySamplingActivities(beginDate1, endDate1, querySite);
+          
             var arraySamplingActivities = samplingActivities.ToArray();
 
-            Assert.AreEqual(querySite, arraySamplingActivities[0].SamplingSites);
+            var samplingActivities2 = _wqDataProfile.QuerySamplingActivities(beginDate2, endDate2, querySite2);
+
+            var arraySamplingActivities2 = samplingActivities2.ToArray();
+        
+ //           Assert.AreEqual(querySite, arraySamplingActivities[0].SamplingSites); won't work because of the different pointer levels
+
+            Assert.AreEqual(querySite.Id, arraySamplingActivities[0].SamplingSites.Id);
+            Assert.AreEqual(querySite.Name, arraySamplingActivities[0].SamplingSites.Name);
+            Assert.AreEqual(querySite.Latitude, arraySamplingActivities[0].SamplingSites.Latitude);
+            Assert.AreEqual(querySite.Longitude, arraySamplingActivities[0].SamplingSites.Longitude);
+
+            Assert.AreEqual(querySite2.Id, arraySamplingActivities2[0].SamplingSites.Id);
+            Assert.AreEqual(querySite2.Name, arraySamplingActivities2[0].SamplingSites.Name);
+            Assert.AreEqual(querySite2.Latitude, arraySamplingActivities2[0].SamplingSites.Latitude);
+            Assert.AreEqual(querySite2.Longitude, arraySamplingActivities2[0].SamplingSites.Longitude);
 
             Assert.NotNull(samplingActivities);
             Assert.AreEqual(1, samplingActivities.Count()); //test for the number of values returned after the query

@@ -57,7 +57,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">sampling activity end date</param>
         /// <param name="sites">sampling site</param>
         /// <returns></returns>
-        IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, IEnumerable<Site> sites);
+        IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites);
 
         /// <summary>
         /// Save or Update sampling activities
