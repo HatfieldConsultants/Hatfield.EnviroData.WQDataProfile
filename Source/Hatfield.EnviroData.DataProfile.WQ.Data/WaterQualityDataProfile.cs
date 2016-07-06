@@ -12,8 +12,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
 {
     public class WaterQualityDataProfile : IWaterQualityDataProfile, IDisposable
     {
-        private DbContext _dbContext;
-        public WaterQualityDataProfile(DbContext dbContext)
+        private Hatfield.EnviroData.Core.ODM2Entities _dbContext;
+        public WaterQualityDataProfile(Hatfield.EnviroData.Core.ODM2Entities dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,8 +24,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Site> GetAllSites()
         {
-            var siteModels = from site in _dbContext.Set<Core.Site>()
-                             where site.SamplingFeature.SamplingFeatureTypeCV == "Site"
+            var siteModels = from site in _dbContext.Sites
+                             where (site.SamplingFeature.SamplingFeatureTypeCV == "Site")
                              select new Site
                              {
                                  Id = site.SamplingFeatureID,
@@ -60,12 +60,12 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<Analyte> GetAllAnalytes()
         {
-            var analyteModels = from analyte in _dbContext.Set<Core.SamplingFeature>()
-                                where analyte.SamplingFeatureTypeCV == "Specimen"
+            var analyteModels = from analyte in _dbContext.SamplingFeatures
+                                where (analyte.SamplingFeatureTypeCV == "Specimen")
                                 select new Analyte
                                 {
-                                 Id = analyte.SamplingFeatureID,        //overridden protected
-                                 Name = analyte.SamplingFeatureName,
+                                    Id = analyte.SamplingFeatureID,       
+                                    Name = analyte.SamplingFeatureName,
                                 };
 
             return analyteModels;
@@ -75,16 +75,25 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// Get all sampling activities in the databases
         /// </summary>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> GetAllSamplingActivities() 
+        public IQueryable<SamplingActivity> GetAllSamplingActivities()
         {
-            var samplingActivityModels = from samplingActivity in _dbContext.Set<Core.Action>()
-                                select new SamplingActivity
-                                {
-                                    Id = samplingActivity.ActionID,        //cannot override as it is protected
-                                    StartDateTime = samplingActivity.BeginDateTime,
-                                    EndDateTime = samplingActivity.EndDateTime,
-                               };
-
+            var samplingActivityModels = from samplingActivity in _dbContext.Actions
+                                         select new SamplingActivity
+                                         {
+                                             Id = samplingActivity.ActionID,     
+                                             StartDateTime = samplingActivity.BeginDateTime,
+                                             StartDateTimeUTCOffset = samplingActivity.BeginDateTimeUTCOffset,
+                                             EndDateTime = samplingActivity.EndDateTime,
+                                             EndDateTimeUTCOffset = (int) samplingActivity.EndDateTimeUTCOffset,
+                                            
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
+                                             {
+                                                 Id = x.SamplingFeature.SamplingFeatureID,
+                                                 Name = x.SamplingFeature.SamplingFeatureName,
+                                                 Latitude = x.SamplingFeature.Site.Latitude,
+                                                 Longitude = x.SamplingFeature.Site.Longitude
+                                             }).FirstOrDefault()
+                                         };
             return samplingActivityModels;
         }
 
@@ -106,7 +115,26 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime)
         {
-            throw new NotImplementedException();
+            var samplingActivityModels = from samplingActivity in _dbContext.Actions
+                                         where samplingActivity.BeginDateTime == startDateTime && samplingActivity.EndDateTime == endDateTime
+                                         select new SamplingActivity
+                                         {
+                                             Id = samplingActivity.ActionID,
+                                             StartDateTime = samplingActivity.BeginDateTime,
+                                             StartDateTimeUTCOffset = samplingActivity.BeginDateTimeUTCOffset,
+                                             EndDateTime = samplingActivity.EndDateTime,
+                                             EndDateTimeUTCOffset = (int)samplingActivity.EndDateTimeUTCOffset,
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
+                                             {
+                                                 Id = x.SamplingFeature.SamplingFeatureID,
+                                                 Name = x.SamplingFeature.SamplingFeatureName,
+                                                 Latitude = x.SamplingFeature.Site.Latitude,
+                                                 Longitude = x.SamplingFeature.Site.Longitude
+                                             }).FirstOrDefault()
+                                         };
+            return samplingActivityModels;
+        
+        
         }
 
         /// <summary>
@@ -116,9 +144,28 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">sampling activity end date</param>
         /// <param name="sites">sampling site</param>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, IEnumerable<Site> sites)
+        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites)
         {
-            throw new NotImplementedException();
+
+            var samplingActivityModels = from samplingActivity in _dbContext.Actions
+                                         where (samplingActivity.BeginDateTime == startDateTime && samplingActivity.EndDateTime == endDateTime && (samplingActivity.FeatureActions.FirstOrDefault().SamplingFeatureID == sites.Id))         
+                                         select new SamplingActivity
+                                         {
+                                             Id = samplingActivity.ActionID,
+                                             StartDateTime = samplingActivity.BeginDateTime,
+                                             StartDateTimeUTCOffset = samplingActivity.BeginDateTimeUTCOffset,
+                                             EndDateTime = samplingActivity.EndDateTime,
+                                             EndDateTimeUTCOffset = (int)samplingActivity.EndDateTimeUTCOffset,
+
+                                             SamplingSites = samplingActivity.FeatureActions.Select(x => new Site
+                                             {
+                                                 Id = x.SamplingFeature.SamplingFeatureID,
+                                                 Name = x.SamplingFeature.SamplingFeatureName,
+                                                 Latitude = x.SamplingFeature.Site.Latitude,
+                                                 Longitude = x.SamplingFeature.Site.Longitude
+                                             }).FirstOrDefault()
+                                         };
+            return samplingActivityModels;
         }
 
         /// <summary>
@@ -137,7 +184,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
         {
             throw new NotImplementedException();
         }
@@ -149,7 +196,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
         {
             throw new NotImplementedException();
         }
@@ -161,7 +208,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
         {
             throw new NotImplementedException();
         }
@@ -174,7 +221,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
         {
             throw new NotImplementedException();
         }
@@ -187,7 +234,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
-        public IQueryable<WaterQualitySample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
+        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
                                                                 IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
         {
             throw new NotImplementedException();
@@ -198,12 +245,10 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
-        public bool SaveOrUpdateWaterQualitySamples(IEnumerable<WaterQualitySample> samples)
+        public bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples)
         {
             throw new NotImplementedException();
         }
-
-        
     
         public void Dispose()
         {
