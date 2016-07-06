@@ -22,7 +22,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
         public void Init()
         {
             _dbContext = new ODM2Entities();
-            _wqDataProfile = new WaterQualityDataProfile(_dbContext);    
+            _wqDataProfile = new WaterQualityDataProfile(_dbContext);
         }
 
         [OneTimeTearDown]
@@ -52,11 +52,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(4, sites.Count());
         }
 
-        [Test]
+
+          [Test]
+
         public void AnalyteQueryTest()
         {
             var analytes = _wqDataProfile.GetAllAnalytes();
             var arrayAnalytes = analytes.ToArray();
+
 
             string[] Names = { "Analyte1", "Analyte2", "Analyte3", "Analyte4" };
 
@@ -64,6 +67,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
                 {
                     Assert.AreEqual(Names[i], arrayAnalytes[i].Name);
                 }
+
 
             Assert.NotNull(analytes);
             Assert.AreEqual(4, analytes.Count());
@@ -152,7 +156,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             Assert.NotNull(samplingActivities);
             Assert.AreEqual(1, samplingActivities.Count()); //test for the number of values returned after the query
-        }
+		}
 
         [Test]
         public void QuerySamplingActivities2Test()
@@ -215,5 +219,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(1, samplingActivities.Count()); //test for the number of values returned after the query
 
         }
+
+
     }
 }
