@@ -80,7 +80,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="App.config" />
+=======
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+>>>>>>> upstream/master
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

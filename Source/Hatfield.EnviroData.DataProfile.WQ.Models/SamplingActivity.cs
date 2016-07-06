@@ -13,6 +13,10 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
         public DateTime? EndDateTime { get; set; }
         public long StartDateTimeUTCOffset { get; set; }
         public long EndDateTimeUTCOffset { get; set; }
+<<<<<<< HEAD
         public Site SamplingSites { get; set; }
+=======
+        public IEnumerable<Site> SamplingSites { get; set; }
+>>>>>>> upstream/master
     }
 }
