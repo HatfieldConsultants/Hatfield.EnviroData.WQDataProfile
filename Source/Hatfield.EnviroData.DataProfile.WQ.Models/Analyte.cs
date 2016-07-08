@@ -10,6 +10,6 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Lazy<AnalyteCategory> Category { get; set; }
+        public AnalyteCategory Category { get; set; }
     }
 }

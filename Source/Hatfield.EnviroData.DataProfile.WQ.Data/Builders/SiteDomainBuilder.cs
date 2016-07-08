@@ -67,12 +67,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Builders
                 throw new InvalidCastException("Entity or domain is not supported by the site domain builder.");
             }
 
-            var dataIsTheSame = (dataToCompare.Latitude == dataNeedToCompare.Latitude) &&
-                                (dataToCompare.Longitude == dataNeedToCompare.Longitude) &&
-                                (dataToCompare.SamplingFeature != null) &&
-                                (dataToCompare.SamplingFeature.SamplingFeatureName == dataNeedToCompare.Name);
-
-            return !dataIsTheSame;
+            return !WaterQualityEntityComparer.AreValueEqual(dataNeedToCompare, dataToCompare);
         }
     }
 }

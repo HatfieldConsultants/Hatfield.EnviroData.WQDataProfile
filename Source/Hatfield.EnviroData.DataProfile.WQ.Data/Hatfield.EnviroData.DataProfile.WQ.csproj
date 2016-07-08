@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\SiteDomainBuilder.cs" />
     <Compile Include="WaterQualityDataProfile.cs" />
+    <Compile Include="WaterQualityEntityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hatfield.EnviroData.DataProfile.WQ.Models\Hatfield.EnviroData.DataProfile.WQ.Models.csproj">
