@@ -8,17 +8,17 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
     public class WaterQualityObservation : WQProfileEntity
     {
-        public long Id { get; protected set; }
-        public Lazy<Site> Site { get; set; }
-        public Lazy<Lab> Lab { get; set; }        
-        public Lazy<Analyte> Analyte { get; set; }
+        public long Id { get; set; }
+        public Site Site { get; set; }
+        public Lab Lab { get; set; }        
+        public Analyte Analyte { get; set; }
 
-        public Lazy<Person> ImportBy { get; set; }
-        public Lazy<Person> ValidateBy { get; set; }
+        public Person ImportBy { get; set; }
+        public Person ValidateBy { get; set; }
 
         public DateTime? DateTime { get; set; }
         public long UTCOffset { get; set; }
-        public Lazy<Unit> Unit { get; set; }
+        public Unit Unit { get; set; }
 
         public float? Value { get; set; }
         public ProcessingLevel ProcessingLevel { get; set; }
