@@ -192,8 +192,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               select new WaterQualityObservation
                                               {
                                                  Id = observationModel.RelationID,
-                                                 DateTime = observationModel.Result.FeatureAction.Action.BeginDateTime,
-                                                 UTCOffset = observationModel.Result.FeatureAction.Action.BeginDateTimeUTCOffset,
+                                                 DateTime = observationModel.Result.ResultDateTime,
+                                                 UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
                                                  Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,    //needs to be changed
                                               };
 
@@ -217,8 +217,10 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               select new WaterQualityObservation
                                               {
                                                   Id = observationModel.RelationID,
-                                                  DateTime = observationModel.Result.FeatureAction.Action.BeginDateTime,
-                                                  UTCOffset = observationModel.Result.FeatureAction.Action.BeginDateTimeUTCOffset,
+                                                  DateTime = observationModel.Result.ResultDateTime,
+                                                  UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
+
+
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,    //needs to be changed
                                                   Site = new Site()
                                                   {
@@ -248,8 +250,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               select new WaterQualityObservation
                                               {
                                                   Id = observationModel.RelationID,
-                                                  DateTime = observationModel.Result.FeatureAction.Action.BeginDateTime,
-                                                  UTCOffset = observationModel.Result.FeatureAction.Action.BeginDateTimeUTCOffset,
+                                                  DateTime = observationModel.Result.ResultDateTime,
+                                                  UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,   
                                                   Analyte = new Analyte()
                                                   {
@@ -279,8 +281,9 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               select new WaterQualityObservation
                                               {
                                                   Id = observationModel.RelationID,
-                                                  DateTime = observationModel.Result.FeatureAction.Action.BeginDateTime,
-                                                  UTCOffset = observationModel.Result.FeatureAction.Action.BeginDateTimeUTCOffset,
+                                                  DateTime = observationModel.Result.ResultDateTime,
+                                                  UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
+
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue, 
                                                   Analyte = new Analyte()
                                                   {
@@ -310,9 +313,41 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
-                                                                IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
+                                                          IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
         {
-            throw new NotImplementedException();
+
+            var siteIDList = sites.Select(x => x.Id);
+            var analyteIDList = analytes.Select(x => x.Id); //returns all the values and adds it to list
+             
+    
+            var waterQualityObervationModel = from observationModel in _dbContext.RelatedResults
+                                  
+                                              where (observationModel.Result.ResultDateTime >= startDateTime &&
+                                              observationModel.Result.ResultDateTime <= endDateTime
+                                              && siteIDList.Contains(observationModel.Result.FeatureAction.SamplingFeature.Site.SamplingFeatureID)
+                                              && analyteIDList.Contains(observationModel.Result1.FeatureAction.SamplingFeature.Specimen.SamplingFeatureID)) //use contains to see if identical value is present 
+                                              select new WaterQualityObservation
+                                              {
+                                                  Id = observationModel.RelationID,
+                                                  DateTime = observationModel.Result.ResultDateTime,
+                                                  UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
+                                                  Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,
+                                                  Analyte = new Analyte()
+                                                  {
+                                                      Id = observationModel.Result1.FeatureAction.SamplingFeature.Specimen.SamplingFeatureID,
+                                                      Name = observationModel.Result1.FeatureAction.SamplingFeature.Specimen.SamplingFeature.SamplingFeatureName
+                                                  },
+                                                  Site = new Site()
+                                                  {
+                                                      Id = observationModel.Result.FeatureAction.SamplingFeature.Site.SamplingFeatureID,
+                                                      Name = observationModel.Result.FeatureAction.SamplingFeature.Site.SamplingFeature.SamplingFeatureName,
+                                                      Latitude = observationModel.Result.FeatureAction.SamplingFeature.Site.Latitude,
+                                                      Longitude = observationModel.Result.FeatureAction.SamplingFeature.Site.Longitude
+                                                  }
+                                              };
+
+            return waterQualityObervationModel;
+           
         }
 
         /// <summary>
