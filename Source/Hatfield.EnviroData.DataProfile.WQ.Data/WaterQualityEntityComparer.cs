@@ -64,5 +64,31 @@ namespace Hatfield.EnviroData.DataProfile.WQ
 
             return string.Equals(model.Name, domain.VariableCode, StringComparison.InvariantCulture);
         }
+
+        public static bool AreValueEqual(Hatfield.EnviroData.DataProfile.WQ.Models.WaterQualityObservation model, Hatfield.EnviroData.Core.Action domain)
+        {
+            var observationResult = domain.FeatureActions.FirstOrDefault()
+                                    .Results.FirstOrDefault()
+                                    .MeasurementResult;
+
+            var observationResultValue = observationResult.MeasurementResultValues.FirstOrDefault();
+            var unitOfDomain = observationResult.Unit;
+            var analyteOfDomain = observationResult.Result.Variable;
+            var siteOfDomain = observationResult.Result.FeatureAction.SamplingFeature.Site;
+
+            var personOfDomain = observationResult.Result.;
+            var labOfDomain = domain;
+            
+            
+
+            return model.Value == observationResultValue.DataValue && //value are equal
+                    model.DateTime == observationResultValue.ValueDateTime && //result time are equal
+                    AreValueEqual(model.Site, siteOfDomain) && //site are equal
+                    AreValueEqual(model.Unit, unitOfDomain) && //unit are equal
+                    AreValueEqual(model.ImportBy, personOfDomain) && //importer person are equal
+                    AreValueEqual(model.Lab, labOfDomain) && //lab are equal
+                    AreValueEqual(model.Analyte, analyteOfDomain);//analyte are equal
+                    
+        }
     }
 }
