@@ -219,6 +219,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                                   Id = observationModel.RelationID,
                                                   DateTime = observationModel.Result.ResultDateTime,
                                                   UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
+
+
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,    //needs to be changed
                                                   Site = new Site()
                                                   {
@@ -249,7 +251,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               {
                                                   Id = observationModel.RelationID,
                                                   DateTime = observationModel.Result.ResultDateTime,
-                                                  UTCOffset = (int)observationModel.Result.ResultDateTimeUTCOffset,
+                                                  UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue,   
                                                   Analyte = new Analyte()
                                                   {
@@ -271,8 +273,6 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
         {
-            
-
             var waterQualityObervationModel = from observationModel in _dbContext.RelatedResults
                                               where (observationModel.Result.ResultDateTime >= startDateTime &&
                                               observationModel.Result.ResultDateTime <= endDateTime
@@ -283,6 +283,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                                   Id = observationModel.RelationID,
                                                   DateTime = observationModel.Result.ResultDateTime,
                                                   UTCOffset = (long)observationModel.Result.ResultDateTimeUTCOffset,
+
                                                   Value = (int)observationModel.Result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue, 
                                                   Analyte = new Analyte()
                                                   {

@@ -14,5 +14,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
         public long StartDateTimeUTCOffset { get; set; }
         public long EndDateTimeUTCOffset { get; set; }
         public Site SamplingSites { get; set; }
+
+
     }
 }

@@ -24,19 +24,15 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Builders
             }
 
             var dataNeedToCompare = (Hatfield.EnviroData.DataProfile.WQ.Models.WaterQualityObservation)entity;
-            var dataToCompare = (Hatfield.EnviroData.Core.Result)domain;
+            var dataToCompare = (Hatfield.EnviroData.Core.Action)domain;
 
             if (dataNeedToCompare == null || dataToCompare == null)
             {
                 throw new InvalidCastException("Entity or domain is not supported by the site domain builder.");
             }
 
-            throw new NotImplementedException();
+            return !WaterQualityEntityComparer.AreValueEqual(dataNeedToCompare, dataToCompare);
         }
 
-        private bool IsValueDirty(WaterQualityObservation observation, Hatfield.EnviroData.Core.Action domain)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

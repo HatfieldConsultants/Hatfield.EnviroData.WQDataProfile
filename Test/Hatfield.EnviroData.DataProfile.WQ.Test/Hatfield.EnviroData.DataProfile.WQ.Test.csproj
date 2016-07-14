@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\SiteDomainBuilderTest.cs" />
+    <Compile Include="DomainBuilderFactoryTest.cs" />
     <Compile Include="InMemoryDatabaseGenerator.cs" />
     <Compile Include="ProcessingLevelHelperTest.cs" />
     <Compile Include="WaterQualityProfileIntegrationTest.cs" />
@@ -80,11 +81,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

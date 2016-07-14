@@ -221,6 +221,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
         }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> upstream/master
         //query for range of values over time range
 
 
@@ -240,9 +248,18 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(3, arrayWaterQualityProfile[2].Value);
             Assert.AreEqual(4, arrayWaterQualityProfile[3].Value);
 
+<<<<<<< HEAD
             Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
             Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
 
+=======
+
+            Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+            Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
+
+
+
+>>>>>>> upstream/master
             Assert.NotNull(waterQualityProfile);
             Assert.AreEqual(4, waterQualityProfile.Count()); //test for the number of values returned after the query
         }
@@ -273,7 +290,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(1, waterQualityProfile.Count()); //test for the number of values returned after the query
 
             Assert.AreEqual(1, arrayWaterQualityProfile[0].Value);
+<<<<<<< HEAD
       //      Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+=======
+            Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+>>>>>>> upstream/master
             Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
 
             Assert.AreEqual(querySite.Id, arrayWaterQualityProfile[0].Site.Id);
@@ -281,6 +302,12 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(querySite.Latitude, arrayWaterQualityProfile[0].Site.Latitude);
             Assert.AreEqual(querySite.Longitude, arrayWaterQualityProfile[0].Site.Longitude);
 
+<<<<<<< HEAD
+=======
+
+
+            /////////////////////////////////////
+>>>>>>> upstream/master
             DateTime beginDate2 = new DateTime(2016, 6, 18, 10, 36, 9);
             DateTime endDate2 = new DateTime(2016, 6, 18, 18, 36, 9);
 
@@ -362,12 +389,72 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.NotNull(waterQualityProfile);
             Assert.AreEqual(1, waterQualityProfile.Count()); //test for the number of values returned after the query
             Assert.AreEqual(1, arrayWaterQualityProfile[0].Value);
+<<<<<<< HEAD
       //      Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
             Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
 
             Assert.AreEqual(queryAnalyte.Id, arrayWaterQualityProfile[0].Analyte.Id);
             Assert.AreEqual(queryAnalyte.Name, arrayWaterQualityProfile[0].Analyte.Name);
        
+=======
+
+            /////////////////////////////////
+
+            //Assert.AreEqual(6, arrayWaterQualityProfile[0].Value);
+            //Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+            //Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
+
+            //Assert.AreEqual(queryAnalyte.Id, arrayWaterQualityProfile[0].Analyte.Id);
+            //Assert.AreEqual(queryAnalyte.Name, arrayWaterQualityProfile[0].Analyte.Name);
+       
+
+            //DateTime beginDate2 = new DateTime(2016, 6, 18, 10, 36, 9);
+
+            //var queryAnalyte2 = new Hatfield.EnviroData.DataProfile.WQ.Models.Analyte
+            //{
+            //    Id = 6,
+            //    Name = "Analyte2"
+            //};
+
+            //DateTime endDate2 = new DateTime(2016, 6, 18, 18, 36, 9);
+
+            //var waterQualityProfile2 = _wqDataProfile.QueryWaterQualityData(beginDate2, endDate2, queryAnalyte2);
+            //var arrayWaterQualityProfile2 = waterQualityProfile2.ToArray();
+
+            //Assert.AreEqual(7, arrayWaterQualityProfile2[0].Value);
+            //Assert.AreEqual(beginDate2, arrayWaterQualityProfile2[0].DateTime);
+            //Assert.AreEqual(7, arrayWaterQualityProfile2[0].UTCOffset);
+
+            //Assert.AreEqual(queryAnalyte2.Id, arrayWaterQualityProfile2[0].Analyte.Id);
+            //Assert.AreEqual(queryAnalyte2.Name, arrayWaterQualityProfile2[0].Analyte.Name);
+
+            //Assert.NotNull(waterQualityProfile2);
+            //Assert.AreEqual(1, waterQualityProfile2.Count()); //test for the number of values returned after the query
+
+            /////////////////////////////////
+            //DateTime beginDate3 = new DateTime(2016, 6, 18, 10, 38, 9);
+
+            //var queryAnalyte3 = new Hatfield.EnviroData.DataProfile.WQ.Models.Analyte
+            //{
+            //    Id = 7,
+            //    Name = "Analyte3"
+            //};
+
+            //DateTime endDate3 = new DateTime(2016, 6, 18, 18, 38, 9);
+
+            //var waterQualityProfile3 = _wqDataProfile.QueryWaterQualityData(beginDate3, endDate3, queryAnalyte3);
+            //var arrayWaterQualityProfile3 = waterQualityProfile3.ToArray();
+
+            //Assert.AreEqual(9, arrayWaterQualityProfile3[0].Value);
+            //Assert.AreEqual(beginDate3, arrayWaterQualityProfile3[0].DateTime);
+            //Assert.AreEqual(7, arrayWaterQualityProfile3[0].UTCOffset);
+
+            //Assert.AreEqual(queryAnalyte3.Id, arrayWaterQualityProfile3[0].Analyte.Id);
+            //Assert.AreEqual(queryAnalyte3.Name, arrayWaterQualityProfile3[0].Analyte.Name);
+
+            //Assert.NotNull(waterQualityProfile3);
+            //Assert.AreEqual(1, waterQualityProfile3.Count()); //test for the number of values returned after the query
+>>>>>>> upstream/master
         }
 
         [Test]
@@ -377,6 +464,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             var queryAnalyte = new Hatfield.EnviroData.DataProfile.WQ.Models.Analyte
             {
+<<<<<<< HEAD
                 Id = 8,
                 Name = "Analyte4"
             };
@@ -386,19 +474,37 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             {
                 Id = 4,
                 Name = "S01",
+=======
+                Id = 5,
+                Name = "Analyte1"
+            };
+
+            var querySite = new Hatfield.EnviroData.DataProfile.WQ.Models.Site
+            {
+                Id = 1,
+                Name = "C1",
+>>>>>>> upstream/master
                 Latitude = 49.2827,
                 Longitude = 123.1207
             };
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> upstream/master
             DateTime endDate1 = new DateTime(2016, 6, 18, 18, 34, 9);
 
             var waterQualityProfile = _wqDataProfile.QueryWaterQualityData(beginDate1, endDate1, querySite, queryAnalyte);
             var arrayWaterQualityProfile = waterQualityProfile.ToArray();
 
+<<<<<<< HEAD
             Assert.AreEqual(4, arrayWaterQualityProfile[0].Value);
     //        Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+=======
+            Assert.AreEqual(1, arrayWaterQualityProfile[0].Value);
+            Assert.AreEqual(beginDate1, arrayWaterQualityProfile[0].DateTime);
+>>>>>>> upstream/master
             Assert.AreEqual(7, arrayWaterQualityProfile[0].UTCOffset);
 
             Assert.AreEqual(queryAnalyte.Id, arrayWaterQualityProfile[0].Analyte.Id);
@@ -409,6 +515,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             Assert.AreEqual(querySite.Latitude, arrayWaterQualityProfile[0].Site.Latitude);
             Assert.AreEqual(querySite.Longitude, arrayWaterQualityProfile[0].Site.Longitude);
 
+<<<<<<< HEAD
             Assert.NotNull(waterQualityProfile);
             Assert.AreEqual(1, waterQualityProfile.Count()); 
 
@@ -517,5 +624,15 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
 
 
+=======
+
+
+            Assert.NotNull(waterQualityProfile);
+            Assert.AreEqual(1, waterQualityProfile.Count()); //test for the number of values returned after the query
+            //////////////////////////
+
+        }
+
+>>>>>>> upstream/master
     }
 }
