@@ -8,7 +8,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
     public class WaterQualityObservation : WQProfileEntity
     {
-        public long Id { get; protected set; }
+        public long Id { get; set; }
         public Site Site { get; set; }
         public Lab Lab { get; set; }        
         public Analyte Analyte { get; set; }

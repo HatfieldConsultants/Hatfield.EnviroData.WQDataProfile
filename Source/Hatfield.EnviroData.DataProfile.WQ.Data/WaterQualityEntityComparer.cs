@@ -76,8 +76,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
             var analyteOfDomain = observationResult.Result.Variable;
             var siteOfDomain = observationResult.Result.FeatureAction.SamplingFeature.Site;
 
-            var personOfDomain = observationResult.Result.;
-            var labOfDomain = domain;
+            //var personOfDomain = observationResult.Result.;
+            //var labOfDomain = domain;
             
             
 
@@ -85,8 +85,8 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                     model.DateTime == observationResultValue.ValueDateTime && //result time are equal
                     AreValueEqual(model.Site, siteOfDomain) && //site are equal
                     AreValueEqual(model.Unit, unitOfDomain) && //unit are equal
-                    AreValueEqual(model.ImportBy, personOfDomain) && //importer person are equal
-                    AreValueEqual(model.Lab, labOfDomain) && //lab are equal
+                    //AreValueEqual(model.ImportBy, personOfDomain) && //importer person are equal
+                    //AreValueEqual(model.Lab, labOfDomain) && //lab are equal
                     AreValueEqual(model.Analyte, analyteOfDomain);//analyte are equal
                     
         }

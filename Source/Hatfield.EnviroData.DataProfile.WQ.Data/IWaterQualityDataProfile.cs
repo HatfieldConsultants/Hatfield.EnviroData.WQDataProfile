@@ -16,6 +16,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <returns></returns>
         IQueryable<Site> GetAllSites();
 
+
         /// <summary>
         /// Save or Update site data
         /// </summary>
