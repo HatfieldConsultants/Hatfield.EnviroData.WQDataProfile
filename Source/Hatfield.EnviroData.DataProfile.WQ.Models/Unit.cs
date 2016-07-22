@@ -8,7 +8,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
     public class Unit
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
