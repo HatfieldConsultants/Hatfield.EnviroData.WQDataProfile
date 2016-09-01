@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
-    public class SamplingActivity
+    public class FieldVisit
     {
         public long Id { get; set; }
         public DateTime? StartDateTime { get; set; }

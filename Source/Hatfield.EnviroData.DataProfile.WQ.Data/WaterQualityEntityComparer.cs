@@ -65,7 +65,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
             return string.Equals(model.Name, domain.VariableCode, StringComparison.InvariantCulture);
         }
 
-        public static bool AreValueEqual(Hatfield.EnviroData.DataProfile.WQ.Models.WaterQualityObservation model, Hatfield.EnviroData.Core.Action domain)
+        public static bool AreValueEqual(Hatfield.EnviroData.DataProfile.WQ.Models.LabReportSample model, Hatfield.EnviroData.Core.Action domain)
         {
             var observationResult = domain.FeatureActions.FirstOrDefault()
                                     .Results.FirstOrDefault()

@@ -23,7 +23,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Builders
                 return true;
             }
 
-            var dataNeedToCompare = (Hatfield.EnviroData.DataProfile.WQ.Models.WaterQualityObservation)entity;
+            var dataNeedToCompare = (Hatfield.EnviroData.DataProfile.WQ.Models.LabReportSample)entity;
             var dataToCompare = (Hatfield.EnviroData.Core.Action)domain;
 
             if (dataNeedToCompare == null || dataToCompare == null)

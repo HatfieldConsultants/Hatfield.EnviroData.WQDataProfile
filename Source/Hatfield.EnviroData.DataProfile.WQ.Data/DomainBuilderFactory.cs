@@ -34,7 +34,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         public static void DefaultSetUp()
         { 
             DomainBuilderFactory.Register(typeof(Site), () => new SiteDomainBuilder());
-            DomainBuilderFactory.Register(typeof(WaterQualityObservation), () => new WaterQualityObservationBuilder());
+            DomainBuilderFactory.Register(typeof(LabReportSample), () => new WaterQualityObservationBuilder());
         }
     }
 }

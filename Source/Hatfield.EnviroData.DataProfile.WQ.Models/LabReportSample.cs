@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
-    public class WaterQualityObservation : WQProfileEntity
+    public class LabReportSample : WQProfileEntity
     {
         public long Id { get; set; }
         public Site Site { get; set; }

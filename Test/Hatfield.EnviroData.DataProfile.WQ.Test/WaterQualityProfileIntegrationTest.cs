@@ -186,7 +186,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             int[] queryCount = {4, 3, 2, 1};
 
-            List<IQueryable<SamplingActivity>> QueryList = new List<IQueryable<SamplingActivity>>();
+            List<IQueryable<FieldVisit>> QueryList = new List<IQueryable<FieldVisit>>();
 
 
             for(int i=0; i<beginDates.Count(); i++)
@@ -228,7 +228,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
      
 
-            List<IQueryable<SamplingActivity>> QueryList = new List<IQueryable<SamplingActivity>>();
+            List<IQueryable<FieldVisit>> QueryList = new List<IQueryable<FieldVisit>>();
 
 
            for(int i=0;i<4;i++)
@@ -262,7 +262,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
             DateTime resultDate = new DateTime(2016, 6, 15, 10, 34, 9);
 
-            List<IQueryable<WaterQualityObservation>> QueryList = new List<IQueryable<WaterQualityObservation>>();
+            List<IQueryable<LabReportSample>> QueryList = new List<IQueryable<LabReportSample>>();
 
             var waterQualityProfile = _wqDataProfile.QueryWaterQualityData(beginDate1, endDate1);
            
@@ -301,7 +301,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             DateTime resultDate = new DateTime(2016, 6, 15, 10, 34, 9);
 
 
-            List<IQueryable<WaterQualityObservation>> QueryList = new List<IQueryable<WaterQualityObservation>>();
+            List<IQueryable<LabReportSample>> QueryList = new List<IQueryable<LabReportSample>>();
 
             for(int i=0; i<siteList.Count();i++)
             {
@@ -369,7 +369,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             }
 
        
-            List<IQueryable<WaterQualityObservation>> QueryList = new List<IQueryable<WaterQualityObservation>>();
+            List<IQueryable<LabReportSample>> QueryList = new List<IQueryable<LabReportSample>>();
 
             for(int i=0; i<analyteList.Count(); i++ )
             {
@@ -422,7 +422,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
             }
 
 
-            List<IQueryable<WaterQualityObservation>> QueryList = new List<IQueryable<WaterQualityObservation>>();
+            List<IQueryable<LabReportSample>> QueryList = new List<IQueryable<LabReportSample>>();
             int k = 0;
 
             for(int i= 0 ; i<analyteList.Count();i++)
@@ -499,7 +499,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
                
 
             
-            List<IQueryable<WaterQualityObservation>> queryList = new List<IQueryable<WaterQualityObservation>>();
+            List<IQueryable<LabReportSample>> queryList = new List<IQueryable<LabReportSample>>();
 
             var waterQualityProfile = _wqDataProfile.QueryWaterQualityData(beginDate1, endDate1, siteList, analyteList);
           

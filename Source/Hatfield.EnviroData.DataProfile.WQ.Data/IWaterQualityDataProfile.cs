@@ -34,14 +34,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// Get all sampling activities in the databases
         /// </summary>
         /// <returns></returns>
-        IQueryable<SamplingActivity> GetAllSamplingActivities();
+        IQueryable<FieldVisit> GetAllSamplingActivities();
 
         /// <summary>
         /// Get all field work productions in the databases
         /// each field work production contains a sampling activity and the related water quality samples
         /// </summary>
         /// <returns></returns>
-        IQueryable<FieldWorkProduction> GetAllFieldWorkProductions();
+        IQueryable<Observation> GetAllFieldWorkProductions();
 
         /// <summary>
         /// Query sampling activities
@@ -49,7 +49,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">sampling activity start date</param>
         /// <param name="endDateTime">sampling activity end date</param>
         /// <returns></returns>
-        IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime);
+        IQueryable<FieldVisit> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime);
 
         /// <summary>
         /// Query sampling activities
@@ -58,14 +58,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">sampling activity end date</param>
         /// <param name="sites">sampling site</param>
         /// <returns></returns>
-        IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites);
+        IQueryable<FieldVisit> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites);
 
         /// <summary>
         /// Save or Update sampling activities
         /// </summary>
         /// <param name="samples">sampling activities to save or update</param>
         /// <returns></returns>
-        bool SaveOrUpdateSamplingActivities(IEnumerable<SamplingActivity> samples);
+        bool SaveOrUpdateSamplingActivities(IEnumerable<FieldVisit> samples);
 
         /// <summary>
         /// Query water quality data
@@ -73,7 +73,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
-        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime);
+        IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime);
 
         /// <summary>
         /// Query water quality data
@@ -82,7 +82,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
-        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site);
+        IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site);
 
         /// <summary>
         /// Query water quality data
@@ -91,7 +91,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte);
+        IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte);
 
         /// <summary>
         /// Query water quality data
@@ -101,7 +101,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte);
+        IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte);
 
         /// <summary>
         /// Query water quality data
@@ -111,7 +111,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
-        IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, 
+        IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, 
                                                                 IEnumerable<Site> sites, IEnumerable<Analyte> analytes);
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
-        bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples);
+        bool SaveOrUpdateWaterQualityObservations(IEnumerable<LabReportSample> samples);
 
         
     }

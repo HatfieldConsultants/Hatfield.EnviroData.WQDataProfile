@@ -24,7 +24,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ.Test
 
         [Test]
         [TestCase(typeof(Site), typeof(SiteDomainBuilder))]
-        [TestCase(typeof(WaterQualityObservation), typeof(WaterQualityObservationBuilder))]
+        [TestCase(typeof(LabReportSample), typeof(WaterQualityObservationBuilder))]
         public void DefaultSetUpTest(Type testType, Type expectedBuilderType)
         {
             var builder = DomainBuilderFactory.Create(testType);

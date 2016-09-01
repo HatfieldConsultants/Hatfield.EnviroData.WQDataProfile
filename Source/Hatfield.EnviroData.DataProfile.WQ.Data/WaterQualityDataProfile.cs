@@ -87,10 +87,10 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// Get all sampling activities in the databases
         /// </summary>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> GetAllSamplingActivities()
+        public IQueryable<FieldVisit> GetAllSamplingActivities()
         {
             var samplingActivityModels = from samplingActivity in _dbContext.RelatedActions
-                                         select new SamplingActivity
+                                         select new FieldVisit
                                          {
                                              Id = samplingActivity.RelatedActionID,
                                              StartDateTime = samplingActivity.Action1.BeginDateTime,
@@ -113,13 +113,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// each field work production contains a sampling activity and the related water quality samples
         /// </summary>
         /// <returns></returns>
-        public IQueryable<FieldWorkProduction> GetAllFieldWorkProductions()
+        public IQueryable<Observation> GetAllFieldWorkProductions()
         {
             var fieldWorkProductionModel = from fieldWork in _dbContext.RelatedResults
                                            
-                                           select new FieldWorkProduction
+                                           select new Observation
                                            {
-                                               SamplingActivity = new SamplingActivity
+                                               SamplingActivity = new FieldVisit
                                                {
                                                    Id = fieldWork.Result.FeatureAction.Action.ActionID,
                                                    StartDateTime = fieldWork.Result.FeatureAction.Action.BeginDateTime,
@@ -135,9 +135,9 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                                    }).FirstOrDefault()
 
                                                },
-                                               Samples = new List<WaterQualityObservation>
+                                               Samples = new List<LabReportSample>
                                                {
-                                                   new WaterQualityObservation{
+                                                   new LabReportSample{
 
                                                           Id = fieldWork.RelationID,
                                                           DateTime = fieldWork.Result.ResultDateTime,
@@ -172,11 +172,11 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">sampling activity start date</param>
         /// <param name="endDateTime">sampling activity end date</param>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime)
+        public IQueryable<FieldVisit> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime)
         {
             var samplingActivityModels = from samplingActivity in _dbContext.RelatedActions
                                          where samplingActivity.Action1.BeginDateTime >= startDateTime && samplingActivity.Action1.EndDateTime <= endDateTime
-                                         select new SamplingActivity
+                                         select new FieldVisit
                                          {
                                              Id = samplingActivity.ActionID,
                                              StartDateTime = samplingActivity.Action1.BeginDateTime,
@@ -203,13 +203,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">sampling activity end date</param>
         /// <param name="sites">sampling site</param>
         /// <returns></returns>
-        public IQueryable<SamplingActivity> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites)
+        public IQueryable<FieldVisit> QuerySamplingActivities(DateTime startDateTime, DateTime endDateTime, Site sites)
         {
 
             var samplingActivityModels = from samplingActivity in _dbContext.RelatedActions
                                          where (samplingActivity.Action1.BeginDateTime >= startDateTime && samplingActivity.Action1.EndDateTime <= endDateTime 
                                          && (samplingActivity.Action1.FeatureActions.FirstOrDefault().SamplingFeatureID == sites.Id))         
-                                         select new SamplingActivity
+                                         select new FieldVisit
                                          {
                                              Id = samplingActivity.ActionID,
                                              StartDateTime = samplingActivity.Action1.BeginDateTime,
@@ -232,7 +232,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">sampling activities to save or update</param>
         /// <returns></returns>
-        public bool SaveOrUpdateSamplingActivities(IEnumerable<SamplingActivity> samples)
+        public bool SaveOrUpdateSamplingActivities(IEnumerable<FieldVisit> samples)
         {
             throw new NotImplementedException();
         }
@@ -243,13 +243,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="startDateTime">query start date</param>
         /// <param name="endDateTime">query end date</param>
         /// <returns>water quality samples within the query time range</returns>
-        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
+        public IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime)
         {
             var waterQualityObervationModel = from observationModel in _dbContext.Results
                                               where (observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime >= startDateTime &&
                                              observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime <= endDateTime)
       
-                                              select new WaterQualityObservation
+                                              select new LabReportSample
                                               {
                                                  Id = observationModel.ResultID,
                                                  DateTime = observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime,
@@ -297,14 +297,14 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="site">query site</param>
         /// <returns></returns>
-        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
+        public IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site)
         {
 
             var waterQualityObervationModel = from observationModel in _dbContext.Results
                                               where (observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime >= startDateTime &&
                                              observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime <= endDateTime
                                               && observationModel.FeatureAction.SamplingFeature.SamplingFeatureID == site.Id)
-                                              select new WaterQualityObservation
+                                              select new LabReportSample
                                               {
                                                   Id = observationModel.ResultID,
                                                   DateTime = observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime,
@@ -353,13 +353,13 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="endDateTime">query end date</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
+        public IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Analyte analyte)
         {
             var waterQualityObervationModel = from observationModel in _dbContext.Results
                                               where (observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime >= startDateTime &&
                                              observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime <= endDateTime
                                               && observationModel.VariableID == analyte.Id)
-                                              select new WaterQualityObservation
+                                              select new LabReportSample
                                               {
                                                   Id = observationModel.ResultID,
                                                   DateTime = observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime,
@@ -399,7 +399,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="site">query site</param>
         /// <param name="analyte">query analyte</param>
         /// <returns></returns>
-        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
+        public IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime, Site site, Analyte analyte)
         {
 
 
@@ -409,7 +409,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime <= endDateTime
                                               && observationModel.FeatureAction.SamplingFeature.SamplingFeatureID == site.Id
                                               && observationModel.VariableID == analyte.Id) //use contains to see if identical value is present 
-                                              select new WaterQualityObservation
+                                              select new LabReportSample
                                               {
                                                   Id = observationModel.ResultID,
                                                   DateTime = observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime,
@@ -453,7 +453,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// <param name="sites">query sites</param>
         /// <param name="analytes">query analytes</param>
         /// <returns></returns>
-        public IQueryable<WaterQualityObservation> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
+        public IQueryable<LabReportSample> QueryWaterQualityData(DateTime startDateTime, DateTime endDateTime,
                                                           IEnumerable<Site> sites, IEnumerable<Analyte> analytes)
         {
 
@@ -467,7 +467,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
                                               observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime <= endDateTime
                                               && siteIDList.Contains(observationModel.FeatureAction.SamplingFeature.SamplingFeatureID)
                                               && analyteIDList.Contains(observationModel.VariableID)) //use contains to see if identical value is present 
-                                              select new WaterQualityObservation
+                                              select new LabReportSample
                                               {
                                                   Id = observationModel.ResultID,
                                                   DateTime = observationModel.MeasurementResult.MeasurementResultValues.FirstOrDefault().ValueDateTime,
@@ -510,7 +510,7 @@ namespace Hatfield.EnviroData.DataProfile.WQ
         /// </summary>
         /// <param name="samples">samples to save or update</param>
         /// <returns>save/updated water quality samples</returns>
-        public bool SaveOrUpdateWaterQualityObservations(IEnumerable<WaterQualityObservation> samples)
+        public bool SaveOrUpdateWaterQualityObservations(IEnumerable<LabReportSample> samples)
         {
             throw new NotImplementedException();
         }

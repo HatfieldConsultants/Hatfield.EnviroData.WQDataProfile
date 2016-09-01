@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hatfield.EnviroData.DataProfile.WQ.Models
 {
-    public class FieldWorkProduction
+    public class FieldSpecimen
     {
-        public SamplingActivity SamplingActivity { get; set; }
-        public IEnumerable<WaterQualityObservation> Samples { get; set; }
+        public FieldVisit FieldVisit { get; set; }
+        public Site Site { get; set; }
     }
 }
